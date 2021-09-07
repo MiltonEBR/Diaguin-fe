@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors'); //eslint-disable-line
+
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -14,7 +16,9 @@ module.exports = {
       },
       purple: {
         light: '#7971EA',
+        hover: '#8b83fa',
       },
+      gray: colors.gray,
     },
   },
   variants: {

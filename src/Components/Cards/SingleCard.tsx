@@ -1,25 +1,29 @@
 import React from 'react';
+import Button from './Button';
+import Content from './Content';
 import Title from './Title';
 
 interface Props {
   ttl: string;
   description: string;
-  onClick?: () => void;
+  onClick?: (txt: string) => void;
 }
 
 function SingleCard({ ttl, description, onClick }: Props): JSX.Element {
   return (
-    <div>
+    <div
+      className={`w-60 max-w-xl min-w-min h-56 p-6
+    shadow-xl rounded-3xl bg-gray
+    flex flex-none flex-col`}
+    >
       <Title text={ttl} />
-      <p>{description}</p>
-      <button
+      <Content text={description} />
+      <Button
+        text="Open"
         onClick={() => {
-          if (onClick) onClick();
+          if (onClick) onClick(ttl);
         }}
-        type="button"
-      >
-        Go
-      </button>
+      />
     </div>
   );
 }
