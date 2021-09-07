@@ -1,14 +1,5 @@
 import React from 'react';
-import global from '../../Styles/global';
-
-const miniSub = (text: string): JSX.Element => {
-  const style = {
-    color: global.colors.darkMain,
-    'font-size': '1em',
-  };
-
-  return <h3 style={style}>{text}</h3>;
-};
+import Title from './Title';
 
 interface Props {
   ttl: string;
@@ -19,7 +10,7 @@ interface Props {
 function SingleCard({ ttl, description, onClick }: Props): JSX.Element {
   return (
     <div>
-      {miniSub(ttl)}
+      <Title text={ttl} />
       <p>{description}</p>
       <button
         onClick={() => {

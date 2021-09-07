@@ -1,14 +1,8 @@
 import React from 'react';
-import global from '../../Styles/global';
-
-const style = {
-  'font-size': '2em',
-  color: global.colors.darkMain,
-};
 
 function WelcomeTtl({ name }: { name: string }): JSX.Element {
   return (
-    <div style={style}>
+    <div className="text-2xl text-blue-dark">
       Welcome back, <b>{name}</b>
     </div>
   );
