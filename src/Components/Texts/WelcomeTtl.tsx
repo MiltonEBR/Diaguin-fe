@@ -2,7 +2,7 @@ import React from 'react';
 
 function WelcomeTtl({ name }: { name: string }): JSX.Element {
   return (
-    <div className="text-2xl text-blue-dark">
+    <div className="text-2xl text-blue">
       Welcome back, <b>{name}</b>
     </div>
   );

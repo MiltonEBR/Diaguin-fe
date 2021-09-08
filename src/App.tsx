@@ -3,7 +3,7 @@ import Home from './Views/Home';
 
 function App(): JSX.Element {
   return (
-    <div className="App">
+    <div className="bg-blue-clear h-screen max-h-screen p-6">
       <Home />
     </div>
   );
