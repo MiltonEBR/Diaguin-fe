@@ -4,7 +4,6 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
     fontFamily: {
       sans: ['Open\\ Sans'],
     },
@@ -20,6 +19,11 @@ module.exports = {
         hover: '#8b83fa',
       },
       gray: colors.gray,
+    },
+    extend: {
+      boxShadow: {
+        'top-lg': '0 -2px 6px -1px rgba(0, 0, 0, 0.1)',
+      },
     },
   },
   variants: {
