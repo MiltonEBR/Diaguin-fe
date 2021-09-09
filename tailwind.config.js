@@ -4,6 +4,9 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fill: {
+      dark: '#3E4E88',
+    },
     fontFamily: {
       sans: ['Open\\ Sans'],
     },

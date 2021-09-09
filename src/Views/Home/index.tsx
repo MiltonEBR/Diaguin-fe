@@ -3,31 +3,38 @@ import Subtitle from '../../Components/Texts/Subtitle';
 import LightSubtitle from '../../Components/Texts/LightSubtitle';
 import WelcomeTtl from '../../Components/Texts/WelcomeTtl';
 import Cards from '../../Components/Cards';
-import PreviewList from '../../Components/PreviewList';
+import PreviewGoals from '../../Components/PreviewGoals';
+import { CardsList, Goal } from '../../Types';
+
+const dummyProjects: CardsList = [
+  { ttl: 'Learn Python', description: 'Oh yea my friend' },
+  { ttl: 'Eat healthy', description: 'Get good' },
+];
+
+const dummyGoals: Goal[] = [
+  { name: 'Watch a tutorial', date: 'Today', finished: true },
+  { name: 'Practice 30 min', date: 'Today', finished: false },
+  { name: 'Read a new recipe', date: 'Today', finished: false },
+  { name: 'Prepare a salad', date: 'Today', finished: false },
+];
+
+const dummyName = 'Mark';
 
 function Home(): JSX.Element {
   return (
     <div className="flex flex-col h-full box-content">
       <div className="mb-16">App name placeholder</div>
       <div className="mb-12">
-        <WelcomeTtl name="Mark" />
+        <WelcomeTtl name={dummyName} />
         <LightSubtitle txt="Let's learn something new!" />
       </div>
       <div className="mb-16">
-        <div className="mb-12">
-          <Subtitle txt="My projects" />
-        </div>
-        <div className="-m-6">
-          <Cards />
-        </div>
+        <Subtitle txt="My projects" className="mb-12" />
+        <Cards className="-m-6" list={dummyProjects} />
       </div>
       <div className="flex flex-col flex-grow">
-        <div className="mb-12">
-          <Subtitle txt="Today goals" />
-        </div>
-        <div className="-m-6 h-full">
-          <PreviewList />
-        </div>
+        <Subtitle txt="Today goals" className="mb-12" />
+        <PreviewGoals goals={dummyGoals} className="-m-6 h-full" />
       </div>
     </div>
   );

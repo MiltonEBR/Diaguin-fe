@@ -1,11 +1,21 @@
 import React from 'react';
 
-function WelcomeTtl({ name }: { name: string }): JSX.Element {
+function WelcomeTtl({
+  name,
+  className,
+}: {
+  name: string;
+  className?: string;
+}): JSX.Element {
   return (
-    <div className="text-2xl text-blue">
+    <div className={`text-2xl text-blue ${className}`}>
       Welcome back, <b>{name}</b>
     </div>
   );
 }
+
+WelcomeTtl.defaultProps = {
+  className: '',
+};
 
 export default WelcomeTtl;
