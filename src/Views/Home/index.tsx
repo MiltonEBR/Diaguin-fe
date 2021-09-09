@@ -1,6 +1,5 @@
 import React from 'react';
 import Subtitle from '../../Components/Texts/Subtitle';
-import LightSubtitle from '../../Components/Texts/LightSubtitle';
 import WelcomeTtl from '../../Components/Texts/WelcomeTtl';
 import Cards from '../../Components/Cards';
 import PreviewGoals from '../../Components/PreviewGoals';
@@ -26,14 +25,14 @@ function Home(): JSX.Element {
       <div className="mb-16">App name placeholder</div>
       <div className="mb-12">
         <WelcomeTtl name={dummyName} />
-        <LightSubtitle txt="Let's learn something new!" />
+        <Subtitle txt="Let's learn something new!" className="font-light" />
       </div>
       <div className="mb-16">
-        <Subtitle txt="My projects" className="mb-12" />
+        <Subtitle txt="My projects" className="mb-12 font-bold" />
         <Cards className="-m-6" list={dummyProjects} />
       </div>
       <div className="flex flex-col flex-grow">
-        <Subtitle txt="Today goals" className="mb-12" />
+        <Subtitle txt="Today goals" className="mb-12 font-bold" />
         <PreviewGoals goals={dummyGoals} className="-m-6 h-full" />
       </div>
     </div>

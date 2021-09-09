@@ -8,7 +8,7 @@ function WelcomeTtl({
   className?: string;
 }): JSX.Element {
   return (
-    <div className={`text-2xl text-blue ${className}`}>
+    <div className={`text-3xl text-blue ${className}`}>
       Welcome back, <b>{name}</b>
     </div>
   );

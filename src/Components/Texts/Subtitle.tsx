@@ -7,7 +7,9 @@ function Subtitle({
   txt: string;
   className?: string;
 }): JSX.Element {
-  return <h2 className={`text-2xl text-blue font-bold ${className}`}>{txt}</h2>;
+  return (
+    <h2 className={`text-2xl text-blue ${className || 'font-bold'}`}>{txt}</h2>
+  );
 }
 
 Subtitle.defaultProps = {
