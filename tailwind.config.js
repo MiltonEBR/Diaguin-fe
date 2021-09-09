@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     fill: {
       dark: '#3E4E88',
+      gray: colors.gray,
     },
     fontFamily: {
       sans: ['Open\\ Sans'],
