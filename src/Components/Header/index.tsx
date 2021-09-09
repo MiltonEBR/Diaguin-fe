@@ -4,13 +4,19 @@ import { IconContext } from 'react-icons';
 import Subtitle from '../Texts/Subtitle';
 import Title from '../Texts/Title';
 
-function Header({ name }: { name: string }): JSX.Element {
+function Header({
+  name,
+  className,
+}: {
+  name: string;
+  className?: string;
+}): JSX.Element {
   return (
     <div
-      className="bg-blue-ligth px-6 pt-6 pb-10 rounded-b-3xl
-                    absolute w-full left-0 top-0"
+      className={`bg-blue-ligth px-6 pt-4 pb-10 rounded-b-3xl
+                    w-screen ${className}`}
     >
-      <button type="button" className="mb-7">
+      <button type="button" className="mb-6 -ml-3">
         <IconContext.Provider value={{ className: 'fill-gray-50 h-9 w-9' }}>
           <Arrow />
         </IconContext.Provider>
@@ -20,5 +26,9 @@ function Header({ name }: { name: string }): JSX.Element {
     </div>
   );
 }
+
+Header.defaultProps = {
+  className: '',
+};
 
 export default Header;
