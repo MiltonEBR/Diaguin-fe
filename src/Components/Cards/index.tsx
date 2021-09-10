@@ -14,7 +14,7 @@ function Cards({
 
   return (
     <div
-      className={`flex flex-row overflow-x-scroll
+      className={`flex flex-row overflow-x-auto
                   w-screen pl-6 pb-10 ${className}`}
     >
       {list.map(({ ttl, description }: CardProps) => (

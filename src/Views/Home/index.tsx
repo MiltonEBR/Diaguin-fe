@@ -21,7 +21,7 @@ const dummyName = 'Mark';
 
 function Home(): JSX.Element {
   return (
-    <div className="flex flex-col h-full box-content">
+    <div className="flex flex-col h-full">
       <div className="mb-16">App name placeholder</div>
       <div className="mb-12">
         <WelcomeTtl name={dummyName} />
@@ -31,7 +31,7 @@ function Home(): JSX.Element {
         <Subtitle txt="My projects" className="mb-12 font-bold" />
         <Cards className="-m-6" list={dummyProjects} />
       </div>
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col flex-grow max-w-full">
         <Subtitle txt="Today goals" className="mb-12 font-bold" />
         <PreviewGoals goals={dummyGoals} className="-m-6 h-full" />
       </div>
