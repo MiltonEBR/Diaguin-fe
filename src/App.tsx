@@ -6,7 +6,7 @@ import Project from './Views/Project';
 function App(): JSX.Element {
   return (
     <Router>
-      <div className="bg-blue-clear h-screen max-h-screen p-6">
+      <div className="bg-blue-clear h-screen min-h-screen px-6 pt-6">
         <Switch>
           <Route path="/project/:id">
             <Project />

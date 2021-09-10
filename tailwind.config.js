@@ -23,6 +23,7 @@ module.exports = {
         hover: '#8b83fa',
       },
       gray: colors.gray,
+      black: colors.black,
     },
     extend: {
       boxShadow: {

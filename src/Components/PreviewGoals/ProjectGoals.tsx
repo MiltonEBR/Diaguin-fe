@@ -1,8 +1,9 @@
 import React from 'react';
 import { Goal } from '../../Types';
+import Subtitle from '../Texts/Subtitle';
 import GoalItem from './GoalItem';
 
-function PreviewList({
+function ProjectGoals({
   className,
   goals,
 }: {
@@ -20,19 +21,27 @@ function PreviewList({
       >
         Expand
       </button>
+      <Subtitle txt="Upcoming" className="font-bold pl-6 mb-2 mt-5" />
       {goals.map((g: Goal) => (
         <GoalItem
           goal={g}
           className="border-solid border-b-2 border-opacity-20 border-blue-dark"
-          showArrow
+          showDate
+        />
+      ))}
+      <Subtitle txt="No date" className="font-bold pl-6 mb-2 mt-10" />
+      {goals.map((g: Goal) => (
+        <GoalItem
+          goal={g}
+          className="border-solid border-b-2 border-opacity-20 border-blue-dark"
         />
       ))}
     </div>
   );
 }
 
-PreviewList.defaultProps = {
+ProjectGoals.defaultProps = {
   className: '',
 };
 
-export default PreviewList;
+export default ProjectGoals;

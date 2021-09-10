@@ -11,25 +11,33 @@ function GoalItem({
   goal,
   showDate,
   className,
+  showArrow,
 }: {
   goal: Goal;
   showDate?: boolean;
+  showArrow?: boolean;
   className?: string;
 }): JSX.Element {
   return (
-    <div className={`w-full py-4 px-6 flex flex-row items-center ${className}`}>
+    <div
+      className={`w-full py-4 px-6 flex flex-row content-center ${className}`}
+    >
       <button type="button" className="mr-3">
         <IconContext.Provider value={{ className: 'fill-dark h-7 w-7' }}>
           {goal.finished ? <Check /> : <NoCheck />}
         </IconContext.Provider>
       </button>
-      {goal.date && showDate ? <p>{goal.date}</p> : null}
+      {goal.date && showDate ? (
+        <p className="font-semibold text-blue text-xl mr-3">{goal.date}</p>
+      ) : null}
       <p className="font-light text-blue text-lg">{goal.name}</p>
-      <button type="button" className="ml-auto">
-        <IconContext.Provider value={{ className: 'fill-dark h-7 w-7' }}>
-          <Arrow />
-        </IconContext.Provider>
-      </button>
+      {showArrow && (
+        <button type="button" className="ml-auto">
+          <IconContext.Provider value={{ className: 'fill-dark h-7 w-7' }}>
+            <Arrow />
+          </IconContext.Provider>
+        </button>
+      )}
     </div>
   );
 }
@@ -37,6 +45,7 @@ function GoalItem({
 GoalItem.defaultProps = {
   className: '',
   showDate: false,
+  showArrow: false,
 };
 
 export default GoalItem;
