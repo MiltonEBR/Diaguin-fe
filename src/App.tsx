@@ -1,15 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Goals from './Views/Goals';
 import Home from './Views/Home';
 import Project from './Views/Project';
 
 function App(): JSX.Element {
   return (
     <Router>
-      <div className="bg-blue-clear h-screen min-h-screen px-6 pt-6">
+      <div
+        className="bg-blue-clear h-screen min-h-screen px-6 pt-6
+                     overflow-x-hidden"
+      >
         <Switch>
           <Route path="/project/:id">
             <Project />
+          </Route>
+          <Route path="/goals/:id">
+            <Goals />
           </Route>
           <Route path="/">
             <Home />
