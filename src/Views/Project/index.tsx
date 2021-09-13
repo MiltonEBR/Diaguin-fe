@@ -17,7 +17,10 @@ const dummyGoals: Goal[] = [
 
 function Project(): JSX.Element {
   return (
-    <div className="flex flex-col h-full box-content ">
+    <div
+      className="bg-blue-clear h-screen max-h-screen
+                  px-6 pt-6 flex flex-col overflow-x-hidden"
+    >
       <Header name={dummyTitle} sub="Project" className="-ml-6 -mt-6 mb-10" />
       <Subtitle txt="Progress" />
       <Progress curr={50} max={100} className="my-6" />
@@ -29,7 +32,10 @@ function Project(): JSX.Element {
         className="mb-6 max-w-screen-md flex-shrink-0"
       />
       <Subtitle txt="Goals" className="font-bold mb-6" />
-      <ProjectGoals goals={dummyGoals} className="-ml-6" />
+      <ProjectGoals
+        goals={dummyGoals}
+        className="-ml-6 flex-shrink flex-grow-0 min-h-0"
+      />
     </div>
   );
 }

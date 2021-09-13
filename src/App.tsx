@@ -7,22 +7,17 @@ import Project from './Views/Project';
 function App(): JSX.Element {
   return (
     <Router>
-      <div
-        className="bg-blue-clear h-screen min-h-screen px-6 pt-6
-                     overflow-x-hidden"
-      >
-        <Switch>
-          <Route path="/project/:id">
-            <Project />
-          </Route>
-          <Route path="/goals/:id">
-            <Goals />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/project/:id">
+          <Project />
+        </Route>
+        <Route path="/goals/:id">
+          <Goals />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
     </Router>
   );
 }

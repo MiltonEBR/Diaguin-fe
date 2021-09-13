@@ -21,7 +21,10 @@ const dummyName = 'Mark';
 
 function Home(): JSX.Element {
   return (
-    <div className="flex flex-col h-full">
+    <div
+      className="bg-blue-clear h-screen min-h-screen
+                px-6 pt-6 flex flex-col overflow-x-hidden"
+    >
       <div className="mb-16">App name placeholder</div>
       <div className="mb-12">
         <WelcomeTtl name={dummyName} />
