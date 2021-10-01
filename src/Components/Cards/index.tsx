@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { CardProps, CardsList } from '../../Types';
+import { Project } from '../../Types';
 import SingleCard from './SingleCard';
 
 function Cards({
@@ -8,7 +8,7 @@ function Cards({
   list,
 }: {
   className?: string;
-  list: CardsList;
+  list: Project[];
 }): JSX.Element {
   const history = useHistory();
 
@@ -17,12 +17,12 @@ function Cards({
       className={`flex flex-row overflow-x-auto
                   w-screen pl-6 pb-10 ${className}`}
     >
-      {list.map(({ ttl, description }: CardProps) => (
+      {list.map(({ name, id, goalCount, finishedGoals }: Project) => (
         <SingleCard
-          ttl={ttl}
-          description={description}
+          ttl={name}
+          description={`${finishedGoals}/${goalCount} goals finished`}
           onClick={() => {
-            history.push(`/project/${ttl}`);
+            history.push(`/project/${id}`);
           }}
         />
       ))}

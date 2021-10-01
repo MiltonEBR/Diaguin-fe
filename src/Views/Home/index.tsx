@@ -3,23 +3,13 @@ import Subtitle from '../../Components/Texts/Subtitle';
 import WelcomeTtl from '../../Components/Texts/WelcomeTtl';
 import Cards from '../../Components/Cards';
 import PreviewGoals from '../../Components/PreviewGoals';
-import { CardsList, Goal } from '../../Types';
-
-const dummyProjects: CardsList = [
-  { ttl: 'Learn Python', description: 'Oh yea my friend' },
-  { ttl: 'Eat healthy', description: 'Get good' },
-];
-
-const dummyGoals: Goal[] = [
-  { name: 'Watch a tutorial', date: 'Today', finished: true },
-  { name: 'Practice 30 min', date: 'Today', finished: false },
-  { name: 'Read a new recipe', date: 'Today', finished: false },
-  { name: 'Prepare a salad', date: 'Today', finished: false },
-];
+import { Project } from '../../Types';
 
 const dummyName = 'Mark';
 
-function Home(): JSX.Element {
+// TODO: Figure out how to display the goals
+
+function Home({ projects }: { projects: Project[] }): JSX.Element {
   return (
     <div
       className="bg-blue-clear h-screen min-h-screen
@@ -32,11 +22,11 @@ function Home(): JSX.Element {
       </div>
       <div className="mb-16">
         <Subtitle txt="My projects" className="mb-12 font-bold" />
-        <Cards className="-m-6" list={dummyProjects} />
+        <Cards className="-m-6" list={projects} />
       </div>
       <div className="flex flex-col flex-grow max-w-full">
         <Subtitle txt="Today goals" className="mb-12 font-bold" />
-        <PreviewGoals goals={dummyGoals} className="-m-6 h-full" />
+        <PreviewGoals goals={[]} className="-m-6 h-full" />
       </div>
     </div>
   );

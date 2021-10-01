@@ -1,0 +1,42 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Learn Python",
+      "goalsId": [1, 2, 3, 4],
+      "goalCount": 3,
+      "finishedGoals": 0
+    }
+  ],
+
+  "goals": [
+    {
+      "id": 1,
+      "description": "Watch a tutorial",
+      "repeat": false,
+      "dates": ["April 20, 2020"],
+      "finished": false
+    },
+    {
+      "id": 2,
+      "description": "Machine learning",
+      "repeat": true,
+      "dates": ["Monday", "Thuesday", "Wednesday"],
+      "finished": false
+    },
+    {
+      "id": 3,
+      "description": "Bip bup",
+      "repeat": false,
+      "dates": [],
+      "finished": false
+    },
+    {
+      "id": 4,
+      "description": "Some goal",
+      "repeat": false,
+      "dates": ["Monday", "Thuesday", "Wednesday"],
+      "finished": false
+    }
+  ]
+}

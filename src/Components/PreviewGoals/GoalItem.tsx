@@ -27,10 +27,11 @@ function GoalItem({
           {goal.finished ? <Check /> : <NoCheck />}
         </IconContext.Provider>
       </button>
-      {goal.date && showDate ? (
-        <p className="font-semibold text-blue text-xl mr-3">{goal.date}</p>
+      {goal.dates && showDate ? (
+        // TODO: Show the appropiate date
+        <p className="font-semibold text-blue text-xl mr-3">{goal.dates[0]}</p>
       ) : null}
-      <p className="font-light text-blue text-lg">{goal.name}</p>
+      <p className="font-light text-blue text-lg">{goal.description}</p>
       {showArrow && (
         <button type="button" className="ml-auto">
           <IconContext.Provider value={{ className: 'fill-dark h-7 w-7' }}>

@@ -12,6 +12,7 @@
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
     "@types/react-router": "^5.1.16",
+    "axios": "^0.22.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -25,7 +26,8 @@
     "build": "craco build",
     "test": "craco test",
     "lint": "eslint . --ext .ts --ext .tsx",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --port 3001 --watch db.json"
   },
   "eslintConfig": {
     "extends": [
@@ -60,6 +62,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "json-server": "^0.16.3",
     "postcss": "^7.0.36",
     "prettier": "^2.3.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.10"

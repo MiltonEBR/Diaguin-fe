@@ -8,7 +8,17 @@ export interface CardProps {
 export type CardsList = Pick<CardProps, 'ttl' | 'description'>[];
 
 export interface Goal {
-  date?: string;
-  name: string;
+  id: string;
+  description: string;
+  repeat: boolean;
   finished: boolean;
+  dates: Array<string>;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  goalsId: Array<string>;
+  goalCount: number;
+  finishedGoals: number;
 }

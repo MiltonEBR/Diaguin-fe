@@ -5,10 +5,12 @@ import GoalItem from './GoalItem';
 
 function ProjectGoals({
   className,
-  goals,
+  upcomingGoals,
+  noDateGoals,
 }: {
   className?: string;
-  goals: Goal[];
+  upcomingGoals: Goal[];
+  noDateGoals: Goal[];
 }): JSX.Element {
   return (
     <div
@@ -24,7 +26,7 @@ function ProjectGoals({
       </button>
       <div className="overflow-y-scroll flex-shrink flex-grow-0 min-h-0">
         <Subtitle txt="Upcoming" className="font-bold pl-6 mb-2 mt-5" />
-        {goals.map((g: Goal) => (
+        {upcomingGoals.map((g: Goal) => (
           <GoalItem
             goal={g}
             className="border-solid border-b-2
@@ -33,7 +35,7 @@ function ProjectGoals({
           />
         ))}
         <Subtitle txt="No date" className="font-bold pl-6 mb-2 mt-10" />
-        {goals.map((g: Goal) => (
+        {noDateGoals.map((g: Goal) => (
           <GoalItem
             goal={g}
             className="border-solid border-b-2
