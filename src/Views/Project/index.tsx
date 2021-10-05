@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import BigButton from '../../Components/BigButton';
 import Header from '../../Components/Header';
 import ProjectGoals from '../../Components/PreviewGoals/ProjectGoals';
 import Progress from '../../Components/Progress';
 import Subtitle from '../../Components/Texts/Subtitle';
-import goalsServices from '../../Services/goals';
 import { Goal, Project as ProjectType } from '../../Types';
 
-function Project({ project }: { project: ProjectType | null }): JSX.Element {
-  const [goals, setGoals] = useState<Goal[]>([]);
-
-  useEffect(() => {
-    if (!project) return;
-
-    const getGoals = async (): Promise<void> => {
-      for (let i = 0; i < project.goalsId.length; i += 1) {
-        // eslint-disable-next-line no-await-in-loop
-        const goal = await goalsServices.getById(project.goalsId[i]);
-        setGoals((prev) => [...prev, goal]);
-      }
-    };
-    getGoals();
-  }, [project]);
-
+function Project({
+  project,
+  goals,
+}: {
+  project: ProjectType | null;
+  goals: Goal[];
+}): JSX.Element {
   if (!project) {
     return <div>Error</div>;
   }

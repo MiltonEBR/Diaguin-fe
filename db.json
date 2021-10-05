@@ -14,14 +14,14 @@
       "id": 1,
       "description": "Watch a tutorial",
       "repeat": false,
-      "dates": ["April 20, 2020"],
+      "dates": ["2012-04-23T18:25:43.511Z"],
       "finished": false
     },
     {
       "id": 2,
       "description": "Machine learning",
       "repeat": true,
-      "dates": ["Monday", "Thuesday", "Wednesday"],
+      "dates": ["1", "2", "3"],
       "finished": false
     },
     {
@@ -34,8 +34,8 @@
     {
       "id": 4,
       "description": "Some goal",
-      "repeat": false,
-      "dates": ["Monday", "Thuesday", "Wednesday"],
+      "repeat": true,
+      "dates": ["1", "2", "3"],
       "finished": false
     }
   ]

@@ -13,7 +13,10 @@ export interface Goal {
   repeat: boolean;
   finished: boolean;
   dates: Array<string>;
+  nextDate: string | null;
 }
+
+export type GoalRawData = Omit<Goal, 'nextDate'>;
 
 export interface Project {
   id: string;
@@ -21,4 +24,9 @@ export interface Project {
   goalsId: Array<string>;
   goalCount: number;
   finishedGoals: number;
+}
+
+export interface StoreData {
+  projects: Project[];
+  goals: Goal[];
 }

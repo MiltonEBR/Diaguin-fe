@@ -32,6 +32,7 @@ function ProjectGoals({
             className="border-solid border-b-2
                        border-opacity-20 border-blue-dark"
             showDate
+            key={`up-${g.id}`}
           />
         ))}
         <Subtitle txt="No date" className="font-bold pl-6 mb-2 mt-10" />
@@ -40,6 +41,7 @@ function ProjectGoals({
             goal={g}
             className="border-solid border-b-2
                        border-opacity-20 border-blue-dark"
+            key={`nd-${g.id}`}
           />
         ))}
       </div>
