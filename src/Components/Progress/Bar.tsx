@@ -25,7 +25,7 @@ function Bar({
         className="absolute left-1/2 transform -translate-x-1/2 text-xl
                   text-blue-ligth italic mix-blend-difference font-semibold"
       >
-        {percent}%
+        {percent.toFixed(2)}%
       </p>
       <div className="bg-blue-ligth h-10 absolute mix-blend-screen w-full" />
     </div>

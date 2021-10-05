@@ -29,7 +29,7 @@ function GoalItem({
       </button>
       {goal.dates && showDate ? (
         // TODO: Show the appropiate date
-        <p className="font-semibold text-blue text-xl mr-3">{goal.dates[0]}</p>
+        <p className="font-semibold text-blue text-xl mr-3">{goal.nextDate}</p>
       ) : null}
       <p className="font-light text-blue text-lg">{goal.description}</p>
       {showArrow && (

@@ -1,3 +1,12 @@
+import {
+  compareAsc,
+  format,
+  getDay,
+  getYear,
+  parseJSON,
+  startOfToday,
+} from 'date-fns';
+import { differenceInDays } from 'date-fns/esm';
 import React from 'react';
 import BigButton from '../../Components/BigButton';
 import Header from '../../Components/Header';
@@ -5,6 +14,26 @@ import ProjectGoals from '../../Components/PreviewGoals/ProjectGoals';
 import Progress from '../../Components/Progress';
 import Subtitle from '../../Components/Texts/Subtitle';
 import { Goal, Project as ProjectType } from '../../Types';
+
+const dayName = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
+const getWeekDay = (date: string): string => {
+  const today = startOfToday();
+  const day = parseJSON(date);
+  const dif = Math.abs(differenceInDays(today, day));
+  if (dif <= 6) return dayName[getDay(day)];
+
+  const yDif = Math.abs(getYear(day) - getYear(today));
+  return yDif >= 1 ? format(day, 'dd/MMM/yyy') : format(day, 'MMM, do');
+};
 
 function Project({
   project,
@@ -18,6 +47,12 @@ function Project({
   }
 
   const { name, goalCount, finishedGoals } = project;
+
+  const upcomingGoals = goals
+    .filter((g) => g.nextDate)
+    .sort((a, b) => compareAsc(parseJSON(a.nextDate), parseJSON(b.nextDate)))
+    .map((g) => ({ ...g, nextDate: getWeekDay(g.nextDate) }));
+  const noDateGoals = goals.filter((g) => !g.nextDate);
 
   // TODO: Find the best way to filter upcoming / no dates
   return (
@@ -38,8 +73,8 @@ function Project({
       <Subtitle txt="Goals" className="font-bold mb-6" />
 
       <ProjectGoals
-        upcomingGoals={goals.filter((g) => g.dates.length > 0)}
-        noDateGoals={goals.filter((g) => g.dates.length <= 0)}
+        upcomingGoals={upcomingGoals}
+        noDateGoals={noDateGoals}
         className="-ml-6 flex-shrink flex-grow-0 min-h-0"
       />
     </div>

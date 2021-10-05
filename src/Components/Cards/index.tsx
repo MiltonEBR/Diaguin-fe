@@ -24,6 +24,7 @@ function Cards({
           onClick={() => {
             history.push(`/project/${id}`);
           }}
+          key={`proj-${id}`}
         />
       ))}
     </div>

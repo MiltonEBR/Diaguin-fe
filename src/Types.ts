@@ -13,7 +13,7 @@ export interface Goal {
   repeat: boolean;
   finished: boolean;
   dates: Array<string>;
-  nextDate: string | null;
+  nextDate: string;
 }
 
 export type GoalRawData = Omit<Goal, 'nextDate'>;
