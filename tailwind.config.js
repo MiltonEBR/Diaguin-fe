@@ -7,6 +7,7 @@ module.exports = {
     fill: {
       dark: '#3E4E88',
       gray: colors.gray,
+      purple: '#7971EA',
     },
     fontFamily: {
       sans: ['Open\\ Sans'],

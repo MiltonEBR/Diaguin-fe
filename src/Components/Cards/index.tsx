@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Project } from '../../Types';
+import CreateCard from './CreateCard';
 import SingleCard from './SingleCard';
 
 function Cards({
@@ -27,6 +28,7 @@ function Cards({
           key={`proj-${id}`}
         />
       ))}
+      <CreateCard onClick={() => null} />
     </div>
   );
 }
