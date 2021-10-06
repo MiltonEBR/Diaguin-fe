@@ -1,20 +1,8 @@
 import { useState, useEffect } from 'react';
-import { closestTo, isBefore, parseJSON, startOfToday } from 'date-fns';
-import { Goal, GoalRawData, Project, StoreData } from '../Types';
+import { Goal, Project, StoreData } from '../Types';
 import projectsService from '../Services/projects';
 import goalsServices from '../Services/goals';
-
-const getClosestDate = (goal: GoalRawData): string => {
-  const { dates } = goal;
-  if (dates.length <= 0) return '';
-
-  const todayDate = startOfToday();
-
-  const ds: Date[] = dates
-    .filter((date) => !isBefore(parseJSON(date), todayDate))
-    .map((date) => parseJSON(date));
-  return ds.length > 0 ? closestTo(todayDate, ds).toJSON() : '';
-};
+import { getNextDate } from '../Utils/dates';
 
 function Store(): StoreData {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -36,7 +24,7 @@ function Store(): StoreData {
           const goal = await goalsServices.getById(goalId);
           setGoals((prev) => [
             ...prev,
-            { ...goal, nextDate: getClosestDate(goal) },
+            { ...goal, nextDate: getNextDate(goal.dates) },
           ]);
         });
       }
