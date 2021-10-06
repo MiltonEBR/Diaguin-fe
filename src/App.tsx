@@ -5,11 +5,15 @@ import Home from './Views/Home';
 import Project from './Views/Project';
 
 import Store from './hooks/store';
+import ProjectGoals from './Views/ProjectGoals';
 
 function App(): JSX.Element {
   const { projects, goals } = Store();
 
-  const match = useRouteMatch<{ id: string }>('/project/:id');
+  const match = useRouteMatch<{ id: string }>({
+    path: '/project/:id',
+    strict: false,
+  });
   const project = match
     ? projects.find((p) => {
         return String(p.id) === match.params.id;
@@ -22,6 +26,9 @@ function App(): JSX.Element {
 
   return (
     <Switch>
+      <Route path="/project/:id/details">
+        <ProjectGoals project={project || null} goals={filteredGoals} />
+      </Route>
       <Route path="/project/:id">
         <Project project={project || null} goals={filteredGoals} />
       </Route>
@@ -29,7 +36,7 @@ function App(): JSX.Element {
         <Goals />
       </Route>
       <Route path="/">
-        <Home projects={projects} />
+        <Home projects={projects} goals={goals} />
       </Route>
     </Switch>
   );

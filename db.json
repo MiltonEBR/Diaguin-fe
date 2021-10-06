@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Learn Python",
-      "goalsId": [1, 2, 3, 4],
+      "goalsId": [1, 2, 3, 4, 5, 6],
       "goalCount": 3,
       "finishedGoals": 1
     }
@@ -36,6 +36,20 @@
       "description": "Some goal",
       "repeat": false,
       "dates": ["2021-11-23T18:25:43.511Z"],
+      "finished": true
+    },
+    {
+      "id": 5,
+      "description": "Ayea men",
+      "repeat": true,
+      "dates": [5],
+      "finished": true
+    },
+    {
+      "id": 6,
+      "description": "No date finished",
+      "repeat": false,
+      "dates": [],
       "finished": true
     }
   ]

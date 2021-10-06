@@ -8,10 +8,12 @@ import Title from '../Texts/Title';
 function Header({
   name,
   sub,
+  route,
   className,
 }: {
   name: string;
   sub: string;
+  route?: string;
   className?: string;
 }): JSX.Element {
   const history = useHistory();
@@ -24,7 +26,7 @@ function Header({
       <button
         type="button"
         className="mb-6 -ml-3"
-        onClick={() => history.push('/')}
+        onClick={() => history.push(route || '/')}
       >
         <IconContext.Provider value={{ className: 'fill-gray-50 h-9 w-9' }}>
           <Arrow />
@@ -38,6 +40,7 @@ function Header({
 
 Header.defaultProps = {
   className: '',
+  route: '/',
 };
 
 export default Header;
