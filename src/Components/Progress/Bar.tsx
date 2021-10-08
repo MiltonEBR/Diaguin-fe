@@ -19,13 +19,13 @@ function Bar({
     >
       <div
         className="bg-black w-full h-10 rounded-3xl transition-all duration-300"
-        style={{ width: `${percent}%` }}
+        style={{ width: `${Number.isNaN(percent) ? 0 : percent}%` }}
       />
       <p
         className="absolute left-1/2 transform -translate-x-1/2 text-xl
                   text-blue-ligth italic mix-blend-difference font-semibold"
       >
-        {percent.toFixed(2)}%
+        {Number.isNaN(percent) ? 'No goals' : `${percent.toFixed(2)}%`}
       </p>
       <div className="bg-blue-ligth h-10 absolute mix-blend-screen w-full" />
     </div>

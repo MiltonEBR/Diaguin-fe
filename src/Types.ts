@@ -29,4 +29,5 @@ export interface Project {
 export interface StoreData {
   projects: Project[];
   goals: Goal[];
+  createProject: (a: string) => Promise<void>;
 }

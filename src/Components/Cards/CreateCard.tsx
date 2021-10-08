@@ -1,9 +1,8 @@
 import React from 'react';
 import { IconContext } from 'react-icons';
 import { AiFillPlusCircle } from 'react-icons/ai';
-import { CardProps } from '../../Types';
 
-function CreateCard({ onClick }: Pick<CardProps, 'onClick'>): JSX.Element {
+function CreateCard({ onClick }: { onClick?: () => void }): JSX.Element {
   return (
     <div
       className={`w-60 max-w-xl min-w-min h-48 p-6
@@ -11,7 +10,7 @@ function CreateCard({ onClick }: Pick<CardProps, 'onClick'>): JSX.Element {
                   flex flex-none flex-col items-center place-content-center
                   mr-6`}
     >
-      <button type="button">
+      <button type="button" onClick={onClick}>
         <IconContext.Provider
           value={{ className: 'fill-purple opacity-70 h-20 w-20 mb-4' }}
         >
@@ -19,14 +18,6 @@ function CreateCard({ onClick }: Pick<CardProps, 'onClick'>): JSX.Element {
         </IconContext.Provider>
       </button>
       <p className="text-purple-light">Create project</p>
-      {/* <Title text={ttl} />
-      <Content text={description} />
-      <Button
-        text="Open"
-        onClick={() => {
-          if (onClick) onClick(ttl);
-        }}
-      /> */}
     </div>
   );
 }

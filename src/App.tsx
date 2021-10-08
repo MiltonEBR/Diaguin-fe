@@ -8,7 +8,7 @@ import Store from './hooks/store';
 import ProjectGoals from './Views/ProjectGoals';
 
 function App(): JSX.Element {
-  const { projects, goals } = Store();
+  const { projects, goals, createProject } = Store();
 
   const match = useRouteMatch<{ id: string }>({
     path: '/project/:id',
@@ -36,7 +36,7 @@ function App(): JSX.Element {
         <Goals />
       </Route>
       <Route path="/">
-        <Home projects={projects} goals={goals} />
+        <Home projects={projects} goals={goals} createProject={createProject} />
       </Route>
     </Switch>
   );

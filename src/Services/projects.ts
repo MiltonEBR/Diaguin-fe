@@ -7,9 +7,17 @@ const getAll = (): Promise<Project[]> => {
   return axios.get(baseUrl).then((res) => res.data);
 };
 
-const create = (newObject: Omit<Project, 'id'>): Promise<Project> => {
+const create = (newProjectName: string): Promise<Project> => {
+  const dummyCreation = {
+    // Should be changed to only send the name when backend works
+    name: newProjectName,
+    goalsId: [],
+    goalCount: 0,
+    finishedGoals: 0,
+  };
+
   return axios
-    .post<Omit<Project, 'id'>, AxiosResponse<Project>>(baseUrl, newObject)
+    .post<Omit<Project, 'id'>, AxiosResponse<Project>>(baseUrl, dummyCreation)
     .then((res) => res.data);
 };
 

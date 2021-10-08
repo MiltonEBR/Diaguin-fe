@@ -13,7 +13,7 @@ function BigButton({
     <button
       type="button"
       onClick={onClick}
-      className={`bg-purple-light min-w-min w-full h-10 rounded-full
+      className={`bg-purple-light min-w-min w-full h-12 rounded-full
                   font-semibold text-gray-50 text-xl
                   self-center hover:bg-purple-hover ${className}`}
     >

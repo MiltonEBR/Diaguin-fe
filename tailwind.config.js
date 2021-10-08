@@ -9,6 +9,9 @@ module.exports = {
       gray: colors.gray,
       purple: '#7971EA',
     },
+    stroke: {
+      dark: '#3E4E88',
+    },
     fontFamily: {
       sans: ['Open\\ Sans'],
     },

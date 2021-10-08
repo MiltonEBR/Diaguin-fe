@@ -32,7 +32,12 @@ function Store(): StoreData {
     getGoals();
   }, [projects]);
 
-  return { projects, goals };
+  const createProject = async (name: string): Promise<void> => {
+    const newProj = await projectsService.create(name);
+    setProjects((prev) => [...prev, newProj]);
+  };
+
+  return { projects, goals, createProject };
 }
 
 export default Store;
