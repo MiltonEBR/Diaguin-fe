@@ -71,13 +71,13 @@ function ProjectGoals({
           }}
           onCancel={() => setShowConfirm(false)}
         >
-          <Subtitle txt="Oh boy this is missing" className="mb-6 font-bold" />
+          <Subtitle txt="Goal name" className="mb-6 font-bold" />
           <TextInput
             onChange={(e) => setProjectName(e.target.value)}
             value={projectName}
             placeholder="Goal name"
           />
-          <Subtitle txt="Goal Dates" className="mb-6 font-bold" />
+          <Subtitle txt="Goal Dates" className="mt-6 font-bold" />
           <GoalCalendar />
         </ConfirmationWindow>
       )}
