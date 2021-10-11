@@ -1,0 +1,62 @@
+.rmdp-border {
+  border-style: none;
+}
+
+.rmdp-wrapper {
+  background-color: transparent;
+  padding: 0 1.5rem;
+}
+
+.rmdp-day-picker {
+  background-color: rgba(184, 223, 240, 0.4);
+  border-radius: 1rem;
+}
+
+.rmdp-week-day {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1a2c5b;
+}
+
+/* .rmdp-selected > .sd {
+  background-color: #7971ea;
+  color: white;
+}
+
+.rmdp-today span {
+  background-color: red;
+} */
+
+.rmdp-day {
+  width: 50px;
+  height: 50px;
+}
+
+.sd {
+  font-size: 1rem;
+}
+
+.rmdp-wrapper,
+.rmdp-calendar,
+.rmdp-day-picker > div {
+  width: 100%;
+}
+
+.rmdp-day-picker > div {
+  padding: 0.75rem;
+}
+
+.rmdp-header {
+  line-height: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.rmdp-header-values {
+  color: #1a2c5b;
+  opacity: 0.7;
+  font-size: 1rem;
+}
+
+.rmdp-header > div {
+  height: 100%;
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BigButton from '../../Components/BigButton';
 import ConfirmationWindow from '../../Components/ConfirmationWindow';
 import DetailedGoals from '../../Components/DetailedGoals';
+import GoalCalendar from '../../Components/GoalCalendar';
 import Header from '../../Components/Header';
 import TextInput from '../../Components/TextInput';
 import Subtitle from '../../Components/Texts/Subtitle';
@@ -76,6 +77,8 @@ function ProjectGoals({
             value={projectName}
             placeholder="Goal name"
           />
+          <Subtitle txt="Goal Dates" className="mb-6 font-bold" />
+          <GoalCalendar />
         </ConfirmationWindow>
       )}
     </div>

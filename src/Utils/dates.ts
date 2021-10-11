@@ -10,9 +10,10 @@ import {
   format,
   compareAsc,
   isToday,
+  getMonth,
 } from 'date-fns';
 
-const todayDate = startOfToday();
+export const todayDate = startOfToday();
 const todayDay = getDay(todayDate);
 
 const dayName = [
@@ -23,6 +24,21 @@ const dayName = [
   'Thursday',
   'Friday',
   'Saturday',
+];
+
+const monthName = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 export const getNextDate = (dates: string[]): string => {
@@ -60,3 +76,6 @@ export const compAscDates = (a: string, b: string): number =>
   compareAsc(parseJSON(a), parseJSON(b));
 
 export const dateIsToday = (date: string): boolean => isToday(parseJSON(date));
+
+export const getMonthName = (date: Date): string =>
+  monthName[getMonth(date) - 1];
