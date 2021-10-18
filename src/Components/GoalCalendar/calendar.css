@@ -1,126 +1,256 @@
-.rmdp-border {
-  border-style: none;
-}
+/* DayPicker styles */
 
-.rmdp-wrapper {
-  background-color: transparent;
-  padding: 0 1.5rem;
-}
-
-.rmdp-day-picker {
-  background-color: rgba(184, 223, 240, 0.4);
-  border-radius: 1rem;
-}
-
-.rmdp-week-day {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #1a2c5b;
-}
-
-.rmdp-day span {
-  font-size: 1rem;
-}
-
-.rmdp-day {
-  width: 50px;
-  height: 50px;
-}
-
-.sd {
-  color: #1a2c5b;
-}
-
-.rmdp-wrapper,
-.rmdp-calendar,
-.rmdp-day-picker > div {
+.DayPicker {
+  display: inline-block;
   width: 100%;
-}
-
-.rmdp-day-picker > div {
-  padding: 0.75rem;
-}
-
-.rmdp-header {
-  line-height: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.rmdp-header-values {
-  color: #1a2c5b;
-  opacity: 0.7;
   font-size: 1rem;
-  width: 7rem;
-  margin: auto 5rem;
+  color: #1a2c5b;
 }
 
-.rmdp-header > div {
-  height: 100%;
+.DayPicker-wrapper {
+  position: relative;
+
+  flex-direction: column;
+  display: flex;
+  padding-bottom: 1em;
+
+  -webkit-user-select: none;
+
+  -moz-user-select: none;
+
+  -ms-user-select: none;
+
+  user-select: none;
+}
+
+.DayPicker-Months {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.rmdp-selected > span {
+.DayPicker-Month {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  margin: 0 1em;
+  margin-top: 1em;
+  border-spacing: 0;
+  border-collapse: separate;
+
+  -webkit-user-select: none;
+
+  -moz-user-select: none;
+
+  -ms-user-select: none;
+
+  user-select: none;
+}
+
+/* .DayPicker-NavBar {
+} */
+
+.DayPicker-NavButton {
+  position: absolute;
+  top: 1em;
+  right: 1.5em;
+  left: auto;
+
+  display: inline-block;
+  margin-top: 2px;
+  width: 1.25em;
+  height: 1.25em;
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  color: #8b9898;
+  cursor: pointer;
+}
+
+.DayPicker-NavButton:hover {
+  opacity: 0.8;
+}
+
+.DayPicker-NavButton--prev {
+  margin-right: 1.5em;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAVVJREFUWAnN2G0KgjAYwPHpGfRkaZeqvgQaK+hY3SUHrk1YzNLay/OiEFp92I+/Mp2F2Mh2lLISWnflFjzH263RQjzMZ19wgs73ez0o1WmtW+dgA01VxrE3p6l2GLsnBy1VYQOtVSEH/atCCgqpQgKKqYIOiq2CBkqtggLKqQIKgqgCBjpJ2Y5CdJ+zrT9A7HHSTA1dxUdHgzCqJIEwq0SDsKsEg6iqBIEoq/wEcVRZBXFV+QJxV5mBtlDFB5VjYTaGZ2sf4R9PM7U9ZU+lLuaetPP/5Die3ToO1+u+MKtHs06qODB2zBnI/jBd4MPQm1VkY79Tb18gB+C62FdBFsZR6yeIo1YQiLJWMIiqVjQIu1YSCLNWFgijVjYIuhYYCKoWKAiiFgoopxYaKLUWOii2FgkophYp6F3r42W5A9s9OcgNvva8xQaysKXlFytoqdYmQH6tF3toSUo0INq9AAAAAElFTkSuQmCC');
+}
+
+.DayPicker-NavButton--next {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAXRJREFUWAnN119ugjAcwPHWzJ1gnmxzB/BBE0n24m4xfNkTaOL7wOtsl3AXMMb+Vjaa1BG00N8fSEibPpAP3xAKKs2yjzTPH9RAjhEo9WzPr/Vm8zgE0+gXATAxxuxtqeJ9t5tIwv5AtQAApsfT6TPdbp+kUBcgVwvO51KqVhMkXKsVJFXrOkigVhCIs1Y4iKlWZxB1rX4gwlpRIIpa8SDkWmggrFq4IIRaJKCYWnSgnrXIQV1r8YD+1Vrn+bReagysIFfLABRt31v8oBu1xEBttfRbltmfjgEcWh9snUS2kNdBK6WN1vrOWxObWsz+fjxevsxmB1GQDfINWiev83nhaoiB/CoOU438oPrhXS0WpQ9xc1ZQWxWHqUYe0I0qrKCQKjygDlXIQV2r0IF6ViEBxVTBBSFUQQNhVYkHIVeJAtkNsbQ7c1LtzP6FsObhb2rCKv7NBIGoq4SDmKoEgTirXAcJVGkFSVVpgoSrXICGUMUH/QBZNSUy5XWUhwAAAABJRU5ErkJggg==');
+}
+
+.DayPicker-NavButton--interactionDisabled {
+  display: none;
+}
+
+.DayPicker-Caption {
+  display: table-caption;
+  margin-bottom: 0.5em;
+  padding: 0 0.5em;
+  text-align: left;
+}
+
+.DayPicker-Caption > div {
+  color: #1a2c5b;
+  font-weight: 300;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.DayPicker-Weekdays {
+  width: 100%;
+
+  padding: 1rem;
+
+  background-color: rgba(184, 223, 240, 0.4);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.DayPicker-WeekdaysRow {
+  display: flex;
+  width: inherit;
+  height: inherit;
+  justify-content: space-between;
+}
+
+.DayPicker-Weekday {
+  /* display: table-cell; */
+  padding: 0.5em;
+  color: #8b9898;
+  text-align: center;
+  font-size: 0.875em;
+  min-width: 2.5rem;
+}
+
+.DayPicker-Weekday abbr[title] {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.DayPicker-Body {
+  display: flex;
+
+  padding: 1rem;
+  flex-wrap: wrap;
+  background-color: rgba(184, 223, 240, 0.4);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.DayPicker-Week {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  /* display: table-row; */
+}
+
+.DayPicker-Day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0.5em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.DayPicker-WeekNumber {
+  /* display: table-cell; */
+  padding: 0.5em;
+  min-width: 1rem;
+  border-right: 1px solid #eaecec;
+  color: #8b9898;
+  vertical-align: middle;
+  text-align: right;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.DayPicker--interactionDisabled .DayPicker-Day {
+  cursor: default;
+}
+
+.DayPicker-Footer {
+  padding-top: 0.5em;
+}
+
+.DayPicker-TodayButton {
+  border: none;
+  background-color: transparent;
+  background-image: none;
   box-shadow: none;
+  color: #4a90e2;
+  font-size: 0.875em;
+  cursor: pointer;
 }
 
-:root {
-  --rmdp-primary-purple: #7971ea;
-  --rmdp-today-purple: #7971ea75;
-  --rmdp-hover-purple: #8b83fa;
-  --rmdp-deselect-purple: #ba68c8;
+/* Default modifiers */
+
+.DayPicker-Day--today {
+  color: whitesmoke;
+  background-color: #7971ea75;
+  font-weight: 700;
 }
 
-.purple .rmdp-panel-body li {
-  background-color: var(--rmdp-primary-purple);
+.DayPicker-Day--outside {
+  color: #8b9898;
+  cursor: default;
 }
 
-.purple .rmdp-range {
-  background-color: var(--rmdp-primary-purple);
+.DayPicker-Day--disabled {
+  color: #dce0e0;
+  cursor: default;
+  /* background-color: #eff1f1; */
 }
 
-.purple .rmdp-arrow {
-  border: solid var(--rmdp-primary-purple);
-  border-width: 0 2px 2px 0;
+/* Example modifiers */
+
+.DayPicker-Day--sunday {
+  background-color: #f7f8f8;
 }
 
-.purple .rmdp-arrow-container:hover {
-  background-color: var(--rmdp-primary-purple);
+.DayPicker-Day--sunday:not(.DayPicker-Day--today) {
+  color: #dce0e0;
 }
 
-.purple .rmdp-panel-body::-webkit-scrollbar-thumb {
-  background: var(--rmdp-primary-purple);
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  position: relative;
+
+  background-color: #7971ea;
+  color: #f0f8ff;
 }
 
-.purple .rmdp-day.rmdp-today span {
-  background-color: var(--rmdp-today-purple);
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
+  background-color: #8b83fa;
 }
 
-.purple .rmdp-rtl .rmdp-panel {
-  border-left: unset;
+.DayPicker:not(.DayPicker--interactionDisabled)
+  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  background-color: #8b83fa;
+  color: #f0f8ff;
 }
 
-.purple .rmdp-day.rmdp-selected span:not(.highlight) {
-  background-color: var(--rmdp-primary-purple);
-  box-shadow: none;
+/* DayPickerInput */
+
+.DayPickerInput {
+  display: inline-block;
 }
 
-.purple .rmdp-day:not(.rmdp-day-hidden) span:hover {
-  background-color: var(--rmdp-hover-purple) !important;
+.DayPickerInput-OverlayWrapper {
+  position: relative;
 }
 
-.purple .b-deselect {
-  color: var(--rmdp-deselect-purple);
-  background-color: white;
-}
+.DayPickerInput-Overlay {
+  position: absolute;
+  left: 0;
+  z-index: 1;
 
-.purple .rmdp-action-button {
-  color: var(--rmdp-primary-purple);
-}
-
-.purple .rmdp-button:not(.rmdp-action-button) {
-  background-color: var(--rmdp-primary-purple);
-}
-
-.purple .rmdp-button:not(.rmdp-action-button):hover {
-  background-color: var(--rmdp-deselect-purple);
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
