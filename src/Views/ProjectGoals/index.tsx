@@ -6,6 +6,7 @@ import GoalCalendar from '../../Components/GoalCalendar';
 import Header from '../../Components/Header';
 import TextInput from '../../Components/TextInput';
 import Subtitle from '../../Components/Texts/Subtitle';
+import Toggle from '../../Components/Toggle';
 import { Goal, Project as ProjectType } from '../../Types';
 import { compAscDates, getDisplayDate } from '../../Utils/dates';
 
@@ -77,7 +78,11 @@ function ProjectGoals({
             value={projectName}
             placeholder="Goal name"
           />
-          <Subtitle txt="Goal Dates" className="mt-6 font-bold" />
+          <div className="my-8 flex flex-row">
+            <Subtitle txt="On Repeat" className="font-bold mr-6" />
+            <Toggle name="repeat" />
+          </div>
+          <Subtitle txt="Goal Dates" className="font-bold" />
           <GoalCalendar />
         </ConfirmationWindow>
       )}

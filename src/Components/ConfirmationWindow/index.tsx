@@ -16,7 +16,7 @@ function ConfirmationWindow({
     <div
       className="absolute top-0 left-0
                 bg-blue-dark bg-opacity-75 h-screen w-screen
-                flex items-center place-content-center p-6"
+                flex items-center place-content-center p-6 overflow-x-hidden"
     >
       <form
         className="bg-gray-50 w-full max-w-lg h-auto p-6 rounded-xl

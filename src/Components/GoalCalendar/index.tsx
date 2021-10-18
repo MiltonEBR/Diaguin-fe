@@ -59,14 +59,4 @@ function GoalCalendar(): JSX.Element {
   );
 }
 
-/* <button type="button" onClick={handleClick}>
-            <IconContext.Provider value={{ className: 'w-8 h-8 fill-dark' }}>
-              {direction === 'right' ? (
-                <IoIosArrowForward />
-              ) : (
-                <IoIosArrowBack />
-              )}
-            </IconContext.Provider>
-          </button> */
-
 export default GoalCalendar;
