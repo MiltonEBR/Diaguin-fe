@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BigButton from '../../Components/BigButton';
 import ConfirmationWindow from '../../Components/ConfirmationWindow';
+import DaySelection from '../../Components/DaySelection';
 import DetailedGoals from '../../Components/DetailedGoals';
 import GoalCalendar from '../../Components/GoalCalendar';
 import Header from '../../Components/Header';
@@ -19,6 +20,7 @@ function ProjectGoals({
 }): JSX.Element {
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
   const [projectName, setProjectName] = useState<string>('');
+  const [isRepeat, setIsRepeat] = useState<boolean>(false);
 
   if (!project) {
     return <div>Error</div>;
@@ -80,10 +82,10 @@ function ProjectGoals({
           />
           <div className="my-8 flex flex-row">
             <Subtitle txt="On Repeat" className="font-bold mr-6" />
-            <Toggle name="repeat" />
+            <Toggle name="repeat" onToggle={setIsRepeat} />
           </div>
           <Subtitle txt="Goal Dates" className="font-bold" />
-          <GoalCalendar />
+          {isRepeat ? <DaySelection /> : <GoalCalendar />}
         </ConfirmationWindow>
       )}
     </div>

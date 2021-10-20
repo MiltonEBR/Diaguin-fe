@@ -13,6 +13,7 @@ function Navbar({
   onPreviousClick,
   onNextClick,
   className,
+  showPreviousButton,
 }: NavbarElementProps): JSX.Element {
   return (
     <div
@@ -20,7 +21,13 @@ function Navbar({
                   absolute top-4 ${className}`}
     >
       <button type="button" onClick={() => onPreviousClick()}>
-        <IconContext.Provider value={{ className: 'w-8 h-8 fill-dark' }}>
+        <IconContext.Provider
+          value={{
+            className: `w-8 h-8 fill-dark ${
+              showPreviousButton ? '' : 'opacity-30'
+            }`,
+          }}
+        >
           <IoIosArrowBack />
         </IconContext.Provider>
       </button>

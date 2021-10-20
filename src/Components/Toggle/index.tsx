@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 
-function Toggle({ name }: { name: string }): JSX.Element {
-  const [isChecked, setIsChecked] = useState<boolean>(true);
+function Toggle({
+  name,
+  onToggle,
+}: {
+  name: string;
+  onToggle: (a: boolean) => void;
+}): JSX.Element {
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
     <div className="flex items-center justify-center w-w-min">
@@ -12,7 +18,11 @@ function Toggle({ name }: { name: string }): JSX.Element {
             className="sr-only"
             name={name}
             id={name}
-            onClick={() => setIsChecked((prev) => !prev)}
+            defaultChecked={isChecked}
+            onChange={(e) => {
+              setIsChecked(e.target.checked);
+              onToggle(e.target.checked);
+            }}
           />
           <div
             className={`absolute left-1 top-1 w-6 h-6 rounded-full
