@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IconContext } from 'react-icons';
 import DayPicker, {
   DateUtils,
@@ -40,11 +40,15 @@ function Navbar({
   );
 }
 
-function GoalCalendar(): JSX.Element {
-  const [selectedDates, setSelectedDates] = useState<Date[]>([]);
-
+function GoalCalendar({
+  value,
+  setValue,
+}: {
+  value: Date[];
+  setValue: (a: Date[]) => void;
+}): JSX.Element {
   const handleDayClick = (day: Date, { selected }: DayModifiers): void => {
-    const selectedDays = selectedDates.concat();
+    const selectedDays = value.concat();
     if (selected) {
       const selectedIndex = selectedDays.findIndex((selectedDay) =>
         DateUtils.isSameDay(selectedDay, day),
@@ -53,13 +57,13 @@ function GoalCalendar(): JSX.Element {
     } else {
       selectedDays.push(day);
     }
-    setSelectedDates(selectedDays);
+    setValue(selectedDays);
   };
 
   return (
     <DayPicker
       fromMonth={todayDate}
-      selectedDays={selectedDates}
+      selectedDays={value}
       onDayClick={handleDayClick}
       navbarElement={Navbar}
     />

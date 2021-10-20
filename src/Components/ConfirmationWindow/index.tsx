@@ -9,7 +9,7 @@ function ConfirmationWindow({
   onCancel,
 }: {
   children?: React.ReactChild | React.ReactChild[];
-  onConfirm?: () => void;
+  onConfirm?: React.MouseEventHandler<HTMLButtonElement>;
   onCancel?: () => void;
 }): JSX.Element {
   return (
@@ -24,7 +24,7 @@ function ConfirmationWindow({
       >
         {children}
         <div className="self-center mt-6">
-          <button type="button" onClick={onConfirm} className="mr-20">
+          <button type="submit" onClick={onConfirm} className="mr-20">
             <IconContext.Provider
               value={{ className: 'fill-purple w-10 h-10' }}
             >

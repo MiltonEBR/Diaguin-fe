@@ -22,6 +22,8 @@ function ProjectGoals({
   const [projectName, setProjectName] = useState<string>('');
   const [isRepeat, setIsRepeat] = useState<boolean>(false);
 
+  const [dates, setDates] = useState<Date[] | string[]>([]);
+
   if (!project) {
     return <div>Error</div>;
   }
@@ -67,12 +69,21 @@ function ProjectGoals({
 
       {showConfirm && (
         <ConfirmationWindow
-          onConfirm={() => {
+          onConfirm={(e) => {
+            e.preventDefault();
             setShowConfirm(false);
+            console.log(projectName, isRepeat, dates);
             // createProject(projectName);
             setProjectName('');
+            setDates([]);
+            setIsRepeat(false);
           }}
-          onCancel={() => setShowConfirm(false)}
+          onCancel={() => {
+            setShowConfirm(false);
+            setProjectName('');
+            setDates([]);
+            setIsRepeat(false);
+          }}
         >
           <Subtitle txt="Goal name" className="mb-6 font-bold" />
           <TextInput
@@ -82,10 +93,20 @@ function ProjectGoals({
           />
           <div className="my-8 flex flex-row">
             <Subtitle txt="On Repeat" className="font-bold mr-6" />
-            <Toggle name="repeat" onToggle={setIsRepeat} />
+            <Toggle
+              name="repeat"
+              onToggle={(checked) => {
+                setIsRepeat(checked);
+                setDates([]);
+              }}
+            />
           </div>
           <Subtitle txt="Goal Dates" className="font-bold" />
-          {isRepeat ? <DaySelection /> : <GoalCalendar />}
+          {isRepeat ? (
+            <DaySelection value={dates as string[]} setValue={setDates} />
+          ) : (
+            <GoalCalendar value={dates as Date[]} setValue={setDates} />
+          )}
         </ConfirmationWindow>
       )}
     </div>

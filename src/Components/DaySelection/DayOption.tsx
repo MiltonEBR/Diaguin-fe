@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
-function DayOption({ name }: { name: string }): JSX.Element {
+function DayOption({
+  name,
+  onChange,
+}: {
+  name: string;
+  onChange: (s: string, a: boolean) => void;
+}): JSX.Element {
   const [active, setActive] = useState<boolean>(false);
   return (
     <div>
@@ -10,7 +16,10 @@ function DayOption({ name }: { name: string }): JSX.Element {
           name={name}
           id={name}
           className="sr-only"
-          onChange={(e) => setActive(e.target.checked)}
+          onChange={(e) => {
+            setActive(e.target.checked);
+            onChange(name, e.target.checked);
+          }}
         />
         <div
           className={`w-14 h-14 rounded-full cursor-pointer select-none

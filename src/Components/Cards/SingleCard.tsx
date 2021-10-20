@@ -22,7 +22,8 @@ function SingleCard({
     >
       <Title text={ttl} />
       {Array.isArray(description) ? (
-        description.map((d) => <Content text={d} />)
+        // eslint-disable-next-line react/no-array-index-key
+        description.map((d, i) => <Content text={d} key={`dsc-${ttl}-${i}`} />)
       ) : (
         <Content text={description} />
       )}

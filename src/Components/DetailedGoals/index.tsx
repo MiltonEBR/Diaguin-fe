@@ -12,7 +12,7 @@ function DetailedGoals({
   return (
     <div className={`${className}`}>
       {goals.map((g) => (
-        <GoalItem goal={g} className="mb-2" noEdit={g.finished} />
+        <GoalItem goal={g} className="mb-2" noEdit={g.finished} key={g.id} />
       ))}
     </div>
   );
