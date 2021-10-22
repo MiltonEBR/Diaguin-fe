@@ -16,10 +16,19 @@
     },
     {
       "name": "Test",
+      "goalsId": [
+        7
+      ],
+      "goalCount": 3,
+      "finishedGoals": 0,
+      "id": 2
+    },
+    {
+      "name": "Empty",
       "goalsId": [],
       "goalCount": 0,
       "finishedGoals": 0,
-      "id": 2
+      "id": 3
     }
   ],
   "goals": [
@@ -73,6 +82,17 @@
       "repeat": false,
       "dates": [],
       "finished": true
+    },
+    {
+      "description": "New Test!",
+      "dates": [
+        "2021-10-23T17:00:00.000Z",
+        "2021-10-29T17:00:00.000Z",
+        "2021-10-28T17:00:00.000Z"
+      ],
+      "repeat": false,
+      "finished": false,
+      "id": 7
     }
   ]
 }

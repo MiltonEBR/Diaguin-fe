@@ -1,3 +1,4 @@
+import { isDate } from 'date-fns';
 import React, { useState } from 'react';
 import BigButton from '../../Components/BigButton';
 import ConfirmationWindow from '../../Components/ConfirmationWindow';
@@ -8,18 +9,20 @@ import Header from '../../Components/Header';
 import TextInput from '../../Components/TextInput';
 import Subtitle from '../../Components/Texts/Subtitle';
 import Toggle from '../../Components/Toggle';
-import { Goal, Project as ProjectType } from '../../Types';
+import { Goal, NewGoal, Project as ProjectType } from '../../Types';
 import { compAscDates, getDisplayDate } from '../../Utils/dates';
 
 function ProjectGoals({
   project,
   goals,
+  createGoal,
 }: {
   project: ProjectType | null;
   goals: Goal[];
+  createGoal: (goal: NewGoal, projectId: string) => void;
 }): JSX.Element {
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
-  const [projectName, setProjectName] = useState<string>('');
+  const [goalName, setGoalName] = useState<string>('');
   const [isRepeat, setIsRepeat] = useState<boolean>(false);
 
   const [dates, setDates] = useState<Date[] | string[]>([]);
@@ -72,23 +75,29 @@ function ProjectGoals({
           onConfirm={(e) => {
             e.preventDefault();
             setShowConfirm(false);
-            console.log(projectName, isRepeat, dates);
-            // createProject(projectName);
-            setProjectName('');
+            const newGoal: NewGoal = {
+              description: goalName,
+              repeat: isRepeat,
+              dates: dates.map((d) =>
+                isDate(d) ? (d as Date).toJSON() : (d as string),
+              ),
+            };
+            createGoal(newGoal, project.id);
+            setGoalName('');
             setDates([]);
             setIsRepeat(false);
           }}
           onCancel={() => {
             setShowConfirm(false);
-            setProjectName('');
+            setGoalName('');
             setDates([]);
             setIsRepeat(false);
           }}
         >
           <Subtitle txt="Goal name" className="mb-6 font-bold" />
           <TextInput
-            onChange={(e) => setProjectName(e.target.value)}
-            value={projectName}
+            onChange={(e) => setGoalName(e.target.value)}
+            value={goalName}
             placeholder="Goal name"
           />
           <div className="my-8 flex flex-row">

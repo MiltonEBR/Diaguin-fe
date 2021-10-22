@@ -79,3 +79,7 @@ export const dateIsToday = (date: string): boolean => isToday(parseJSON(date));
 
 export const getMonthName = (date: Date): string =>
   monthName[getMonth(date) - 1];
+
+export const dayNameToNumber = (day: string): string => {
+  return String(dayName.findIndex((d) => d.includes(day)));
+};
