@@ -8,10 +8,12 @@ function GoalItem({
   goal,
   className,
   noEdit,
+  onDelete,
 }: {
   goal: Goal;
   className?: string;
   noEdit?: boolean;
+  onDelete?: undefined | (() => void);
 }): JSX.Element {
   return (
     <div
@@ -30,7 +32,12 @@ function GoalItem({
               </IconContext.Provider>
             </button>
           )}
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => {
+              if (onDelete) onDelete();
+            }}
+          >
             <IconContext.Provider value={{ className: 'fill-dark h-7 w-7' }}>
               <BsTrash />
             </IconContext.Provider>
@@ -51,6 +58,7 @@ function GoalItem({
 GoalItem.defaultProps = {
   className: '',
   noEdit: false,
+  onDelete: undefined,
 };
 
 export default GoalItem;

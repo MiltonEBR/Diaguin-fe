@@ -27,8 +27,13 @@ const update = (id: string, newObject: Project): Promise<Project> => {
     .then((res) => res.data);
 };
 
+const remove = (id: string): Promise<void> => {
+  return axios.delete(`${baseUrl}/${id}`);
+};
+
 export default {
   getAll,
   create,
   update,
+  remove,
 };

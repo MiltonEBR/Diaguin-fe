@@ -4,6 +4,9 @@ import projectsService from '../Services/projects';
 import goalsServices from '../Services/goals';
 import { getNextDate } from '../Utils/dates';
 
+// NOTE: It appears like the delete methods do not work properly,
+// this is a JSON-SERVER problem due to cascade deletion
+
 function Store(): StoreData {
   const [projects, setProjects] = useState<Project[]>([]);
   const [goals, setGoals] = useState<Goal[]>([]);
@@ -57,7 +60,42 @@ function Store(): StoreData {
     }
   };
 
-  return { projects, goals, createProject, createGoal };
+  const deleteProject = async (id: string): Promise<void> => {
+    await projectsService.remove(id);
+    const deleted = { ...projects.find((p) => p.id === id) };
+    setProjects((prev) => prev.filter((p) => p.id !== id));
+    // Probably has to be changed when backend is done
+    if (deleted.goalsId) {
+      deleted.goalsId.forEach(async (goalId) => {
+        await goalsServices.remove(goalId);
+        setGoals((prev) => prev.filter((goal) => goal.id !== goalId));
+      });
+    }
+  };
+
+  const deleteGoal = async (id: string): Promise<void> => {
+    await goalsServices.remove(id);
+    const deletedGoal = goals.find((g) => g.id === id);
+    setGoals((prev) => prev.filter((g) => g.id !== id));
+    // Probably has to be changed when backend is done
+    const newProjects = [...projects];
+    const proj = newProjects.find((p) => p.goalsId.includes(id));
+    if (proj && deletedGoal) {
+      proj.goalsId = proj.goalsId.filter((g) => g !== id);
+      if (!deletedGoal.repeat) proj.goalCount -= 1;
+      newProjects.map((p) => (p.id === proj.id ? proj : p));
+      setProjects([...newProjects]);
+    }
+  };
+
+  return {
+    projects,
+    goals,
+    createProject,
+    createGoal,
+    deleteProject,
+    deleteGoal,
+  };
 }
 
 export default Store;

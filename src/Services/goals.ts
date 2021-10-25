@@ -32,6 +32,10 @@ const create = async (newObject: NewGoal): Promise<Goal> => {
   return { ...createdGoal, dates: formatedDates };
 };
 
+const remove = async (id: string): Promise<void> => {
+  return axios.delete(`${baseUrl}/${id}`);
+};
+
 // const update = (id: string, newObject: Project): Promise<Project> => {
 //   return axios
 //     .put<Project>(`${baseUrl}/${id}`, newObject)
@@ -41,5 +45,6 @@ const create = async (newObject: NewGoal): Promise<Goal> => {
 export default {
   getById,
   create,
+  remove,
   // update,
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import Goals from './Views/Goals';
 import Home from './Views/Home';
 import Project from './Views/Project';
 
@@ -8,7 +7,14 @@ import Store from './hooks/store';
 import ProjectGoals from './Views/ProjectGoals';
 
 function App(): JSX.Element {
-  const { projects, goals, createProject, createGoal } = Store();
+  const {
+    projects,
+    goals,
+    createProject,
+    createGoal,
+    deleteProject,
+    deleteGoal,
+  } = Store();
 
   const match = useRouteMatch<{ id: string }>({
     path: '/project/:id',
@@ -31,13 +37,15 @@ function App(): JSX.Element {
           project={project || null}
           goals={filteredGoals}
           createGoal={createGoal}
+          deleteGoal={deleteGoal}
         />
       </Route>
       <Route path="/project/:id">
-        <Project project={project || null} goals={filteredGoals} />
-      </Route>
-      <Route path="/goals/:id">
-        <Goals />
+        <Project
+          project={project || null}
+          goals={filteredGoals}
+          deleteProject={deleteProject}
+        />
       </Route>
       <Route path="/">
         <Home projects={projects} goals={goals} createProject={createProject} />
