@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Toggle({
   name,
   onToggle,
+  value,
 }: {
   name: string;
   onToggle: (a: boolean) => void;
+  value: boolean;
 }): JSX.Element {
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-
   return (
     <div className="flex items-center justify-center w-w-min">
       <label className="flex items-center cursor-pointer" htmlFor={name}>
@@ -18,16 +18,13 @@ function Toggle({
             className="sr-only"
             name={name}
             id={name}
-            defaultChecked={isChecked}
-            onChange={(e) => {
-              setIsChecked(e.target.checked);
-              onToggle(e.target.checked);
-            }}
+            defaultChecked={value}
+            onChange={(e) => onToggle(e.target.checked)}
           />
           <div
             className={`absolute left-1 top-1 w-6 h-6 rounded-full
               transition transform ${
-                isChecked ? 'bg-purple-light translate-x-full' : 'bg-gray-300'
+                value ? 'bg-purple-light translate-x-full' : 'bg-gray-300'
               }`}
           />
           <div

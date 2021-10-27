@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function DayOption({
   name,
-  onChange,
+  onToggle,
+  value,
 }: {
   name: string;
-  onChange: (s: string, a: boolean) => void;
+  onToggle: (s: string, a: boolean) => void;
+  value: boolean;
 }): JSX.Element {
-  const [active, setActive] = useState<boolean>(false);
   return (
     <div>
       <label htmlFor={name}>
@@ -17,8 +18,7 @@ function DayOption({
           id={name}
           className="sr-only"
           onChange={(e) => {
-            setActive(e.target.checked);
-            onChange(name, e.target.checked);
+            onToggle(name, e.target.checked);
           }}
         />
         <div
@@ -26,7 +26,7 @@ function DayOption({
                       flex items-center place-content-center
                       font-light text-lg mx-2 my-1
                       ${
-                        active
+                        value
                           ? 'bg-purple-light text-gray-50'
                           : 'text-blue-dark'
                       }`}

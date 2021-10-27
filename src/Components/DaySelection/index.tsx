@@ -24,7 +24,12 @@ function DaySelection({
                 place-content-center flex-wrap self-center"
     >
       {days.map((d) => (
-        <DayOption name={d} key={`dayR-${d}`} onChange={onChange} />
+        <DayOption
+          name={d}
+          key={`dayR-${d}`}
+          onToggle={onChange}
+          value={value.find((v) => v === d) !== undefined || false}
+        />
       ))}
     </div>
   );

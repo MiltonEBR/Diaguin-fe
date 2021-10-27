@@ -6,10 +6,12 @@ function DetailedGoals({
   className,
   goals,
   onDelete,
+  onEdit,
 }: {
   className?: string;
   goals: Goal[];
-  onDelete?: undefined | ((id: string) => void);
+  onDelete?: undefined | ((g: Goal) => void);
+  onEdit?: undefined | ((g: Goal) => void);
 }): JSX.Element {
   return (
     <div className={`${className}`}>
@@ -20,7 +22,10 @@ function DetailedGoals({
           noEdit={g.finished}
           key={g.id}
           onDelete={() => {
-            if (onDelete) onDelete(g.id);
+            if (onDelete) onDelete(g);
+          }}
+          onEdit={() => {
+            if (onEdit) onEdit(g);
           }}
         />
       ))}
@@ -31,6 +36,7 @@ function DetailedGoals({
 DetailedGoals.defaultProps = {
   className: '',
   onDelete: undefined,
+  onEdit: undefined,
 };
 
 export default DetailedGoals;

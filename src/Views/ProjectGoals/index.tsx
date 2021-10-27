@@ -1,15 +1,11 @@
-import { isDate } from 'date-fns';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import BigButton from '../../Components/BigButton';
 import ConfirmationWindow from '../../Components/ConfirmationWindow';
-import DaySelection from '../../Components/DaySelection';
 import DetailedGoals from '../../Components/DetailedGoals';
-import GoalCalendar from '../../Components/GoalCalendar';
+import GoalCreationWindow from '../../Components/GoalCreationWindow';
 import Header from '../../Components/Header';
-import TextInput from '../../Components/TextInput';
 import Subtitle from '../../Components/Texts/Subtitle';
-import Toggle from '../../Components/Toggle';
 import type { Goal, NewGoal, Project as ProjectType } from '../../Types';
 import { compAscDates, getDisplayDate } from '../../Utils/dates';
 
@@ -27,12 +23,12 @@ function ProjectGoals({
   const history = useHistory();
 
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
-  const [goalName, setGoalName] = useState<string>('');
-  const [isRepeat, setIsRepeat] = useState<boolean>(false);
 
-  const [dates, setDates] = useState<Date[] | string[]>([]);
+  const [showDeleteWindow, setShowDeleteWindow] = useState<boolean>(false);
 
-  const [deleteGoalWindow, setDeleteGoalWindow] = useState<string>('');
+  const [showEditWindow, setShowEditWindow] = useState<boolean>(false);
+
+  const [selectedGoal, setSelectedGoal] = useState<Goal | null>(null);
 
   if (!project) {
     return <div>Error</div>;
@@ -52,7 +48,15 @@ function ProjectGoals({
       g.nextDate ? { ...g, nextDate: getDisplayDate(g.nextDate) } : g,
     );
 
-  const onClickDelete = (goalId: string): void => setDeleteGoalWindow(goalId);
+  const onClickDelete = (goal: Goal): void => {
+    setSelectedGoal(goal);
+    setShowDeleteWindow(true);
+  };
+
+  const onClickEdit = (goal: Goal): void => {
+    setSelectedGoal(goal);
+    setShowEditWindow(true);
+  };
 
   return (
     <div
@@ -75,6 +79,7 @@ function ProjectGoals({
         goals={upcomingGoals}
         className="my-6"
         onDelete={onClickDelete}
+        onEdit={onClickEdit}
       />
 
       {noDateGoals.length > 0 && <Subtitle txt="No date" />}
@@ -82,6 +87,7 @@ function ProjectGoals({
         goals={noDateGoals}
         className="my-6"
         onDelete={onClickDelete}
+        onEdit={onClickEdit}
       />
 
       {finishedGoals.length > 0 && <Subtitle txt="Finished" />}
@@ -89,69 +95,50 @@ function ProjectGoals({
         goals={finishedGoals}
         className="my-6"
         onDelete={onClickDelete}
+        onEdit={onClickEdit}
       />
 
       {showConfirm && (
-        <ConfirmationWindow
-          onConfirm={(e) => {
-            e.preventDefault();
-            setShowConfirm(false);
-            const newGoal: NewGoal = {
-              description: goalName,
-              repeat: isRepeat,
-              dates: dates.map((d) =>
-                isDate(d) ? (d as Date).toJSON() : (d as string),
-              ),
-            };
-            createGoal(newGoal, project.id);
-            setGoalName('');
-            setDates([]);
-            setIsRepeat(false);
-          }}
-          onCancel={() => {
-            setShowConfirm(false);
-            setGoalName('');
-            setDates([]);
-            setIsRepeat(false);
-          }}
-        >
-          <Subtitle txt="Goal name" className="mb-6 font-bold" />
-          <TextInput
-            onChange={(e) => setGoalName(e.target.value)}
-            value={goalName}
-            placeholder="Goal name"
-          />
-          <div className="my-8 flex flex-row">
-            <Subtitle txt="On Repeat" className="font-bold mr-6" />
-            <Toggle
-              name="repeat"
-              onToggle={(checked) => {
-                setIsRepeat(checked);
-                setDates([]);
-              }}
-            />
-          </div>
-          <Subtitle txt="Goal Dates" className="font-bold" />
-          {isRepeat ? (
-            <DaySelection value={dates as string[]} setValue={setDates} />
-          ) : (
-            <GoalCalendar value={dates as Date[]} setValue={setDates} />
-          )}
-        </ConfirmationWindow>
+        <GoalCreationWindow
+          toggleWindow={setShowConfirm}
+          onAccept={(goal) => createGoal(goal, project.id)}
+          onClose={() => setSelectedGoal(null)}
+        />
       )}
 
-      {deleteGoalWindow && (
+      {showEditWindow && (
+        <GoalCreationWindow
+          toggleWindow={setShowEditWindow}
+          onAccept={() => null} // TODO
+          onClose={() => setSelectedGoal(null)}
+          initParams={
+            selectedGoal
+              ? {
+                  dates: selectedGoal.dates,
+                  name: selectedGoal.description,
+                  repeat: selectedGoal.repeat,
+                }
+              : undefined
+          }
+        />
+      )}
+
+      {showDeleteWindow && (
         <ConfirmationWindow
-          onCancel={() => setDeleteGoalWindow('')}
+          onCancel={() => {
+            setShowDeleteWindow(false);
+            setSelectedGoal(null);
+          }}
           onConfirm={() => {
-            deleteGoal(deleteGoalWindow);
-            setDeleteGoalWindow('');
+            if (selectedGoal) deleteGoal(selectedGoal.id);
+            setSelectedGoal(null);
+            setShowDeleteWindow(false);
           }}
         >
           <Subtitle txt="Are you sure?" className="font-bold" />
           <Subtitle
             txt={`Delete: ${
-              goals.find((g) => g.id === deleteGoalWindow)?.description
+              goals.find((g) => g.id === selectedGoal?.id)?.description
             }`}
             className="font-normal mt-2"
           />

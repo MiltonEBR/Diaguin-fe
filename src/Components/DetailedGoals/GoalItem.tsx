@@ -9,11 +9,13 @@ function GoalItem({
   className,
   noEdit,
   onDelete,
+  onEdit,
 }: {
   goal: Goal;
   className?: string;
   noEdit?: boolean;
   onDelete?: undefined | (() => void);
+  onEdit?: undefined | (() => void);
 }): JSX.Element {
   return (
     <div
@@ -26,7 +28,13 @@ function GoalItem({
         </p>
         <div className="ml-auto">
           {!noEdit && (
-            <button type="button" className="mr-3">
+            <button
+              type="button"
+              className="mr-3"
+              onClick={() => {
+                if (onEdit) onEdit();
+              }}
+            >
               <IconContext.Provider value={{ className: 'fill-dark h-7 w-7' }}>
                 <AiOutlineEdit />
               </IconContext.Provider>
@@ -46,7 +54,6 @@ function GoalItem({
       </div>
 
       {goal.nextDate ? (
-        // TODO: Show the appropiate date
         <p className="font-light text-blue text-base">
           Next due: {goal.nextDate}
         </p>
@@ -59,6 +66,7 @@ GoalItem.defaultProps = {
   className: '',
   noEdit: false,
   onDelete: undefined,
+  onEdit: undefined,
 };
 
 export default GoalItem;
