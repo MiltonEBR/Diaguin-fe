@@ -1,5 +1,5 @@
 import React from 'react';
-import { Goal } from '../../Types';
+import type { Goal } from '../../Types';
 import GoalItem from './GoalItem';
 
 function DetailedGoals({

@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { Project } from '../Types';
+import type { Project } from '../Types';
 
 const baseUrl = 'http://localhost:3001/projects';
 

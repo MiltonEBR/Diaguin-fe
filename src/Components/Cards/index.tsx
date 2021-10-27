@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { Project } from '../../Types';
+import type { Project } from '../../Types';
 import CreateCard from './CreateCard';
 import SingleCard from './SingleCard';
 

@@ -5,7 +5,7 @@ import Header from '../../Components/Header';
 import PreviewGoals from '../../Components/PreviewGoals';
 import Progress from '../../Components/Progress';
 import Subtitle from '../../Components/Texts/Subtitle';
-import { Goal, Project as ProjectType } from '../../Types';
+import type { Goal, Project as ProjectType } from '../../Types';
 import { compAscDates, getDisplayDate } from '../../Utils/dates';
 
 function Project({

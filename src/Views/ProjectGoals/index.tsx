@@ -10,7 +10,7 @@ import Header from '../../Components/Header';
 import TextInput from '../../Components/TextInput';
 import Subtitle from '../../Components/Texts/Subtitle';
 import Toggle from '../../Components/Toggle';
-import { Goal, NewGoal, Project as ProjectType } from '../../Types';
+import type { Goal, NewGoal, Project as ProjectType } from '../../Types';
 import { compAscDates, getDisplayDate } from '../../Utils/dates';
 
 function ProjectGoals({

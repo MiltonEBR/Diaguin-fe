@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { Goal, GoalRawData, NewGoal } from '../Types';
+import type { Goal, GoalRawData, NewGoal } from '../Types';
 import { dayNameToNumber, dayToNextDates } from '../Utils/dates';
 
 const baseUrl = 'http://localhost:3001/goals';

@@ -3,7 +3,7 @@ import Subtitle from '../../Components/Texts/Subtitle';
 import WelcomeTtl from '../../Components/Texts/WelcomeTtl';
 import Cards from '../../Components/Cards';
 import PreviewGoals from '../../Components/PreviewGoals';
-import { Goal, Project } from '../../Types';
+import type { Goal, Project } from '../../Types';
 import { dateIsToday } from '../../Utils/dates';
 import ConfirmationWindow from '../../Components/ConfirmationWindow';
 import TextInput from '../../Components/TextInput';

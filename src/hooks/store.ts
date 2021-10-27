@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Goal, NewGoal, Project, StoreData } from '../Types';
+import type { Goal, NewGoal, Project, StoreData } from '../Types';
 import projectsService from '../Services/projects';
 import goalsServices from '../Services/goals';
 import { getNextDate } from '../Utils/dates';

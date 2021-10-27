@@ -2,7 +2,7 @@ import React from 'react';
 import { IconContext } from 'react-icons/lib';
 import { Link } from 'react-router-dom';
 import { FiFeather } from 'react-icons/fi';
-import { Goal } from '../../Types';
+import type { Goal } from '../../Types';
 import Subtitle from '../Texts/Subtitle';
 import GoalItem from './GoalItem';
 

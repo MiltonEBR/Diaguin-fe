@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardProps } from '../../Types';
+import type { CardProps } from '../../Types';
 import Button from './Button';
 import Content from './Content';
 import Title from './Title';

@@ -5,7 +5,7 @@ import {
 } from 'react-icons/md';
 import { RiArrowRightSLine as Arrow } from 'react-icons/ri';
 import { IconContext } from 'react-icons';
-import { Goal } from '../../Types';
+import type { Goal } from '../../Types';
 
 function GoalItem({
   goal,
