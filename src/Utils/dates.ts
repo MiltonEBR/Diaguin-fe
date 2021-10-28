@@ -4,7 +4,6 @@ import {
   startOfToday,
   parseJSON,
   getDay,
-  addDays,
   differenceInDays,
   getYear,
   format,
@@ -12,10 +11,11 @@ import {
   isToday,
   getMonth,
   isDate,
+  nextDay,
 } from 'date-fns';
 
 export const todayDate = startOfToday();
-const todayDay = getDay(todayDate);
+// const todayDay = getDay(todayDate);
 
 const dayName = [
   'Sunday',
@@ -55,10 +55,7 @@ export const getNextDate = (dates: string[]): string => {
 export const dayToNextDates = (dates: string[]): string[] => {
   return dates.map((day) => {
     const d = Number(day);
-    return addDays(
-      todayDate,
-      todayDay <= d ? d - todayDay : 6 - todayDay + d,
-    ).toJSON();
+    return nextDay(todayDate, d as Day).toJSON();
   });
 };
 

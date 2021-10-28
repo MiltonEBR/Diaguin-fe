@@ -14,11 +14,13 @@ function ProjectGoals({
   goals,
   createGoal,
   deleteGoal,
+  updateGoal,
 }: {
   project: ProjectType | null;
   goals: Goal[];
   createGoal: (goal: NewGoal, projectId: string) => void;
   deleteGoal: (goalId: string) => void;
+  updateGoal: (id: string, goal: NewGoal) => void;
 }): JSX.Element {
   const history = useHistory();
 
@@ -109,7 +111,9 @@ function ProjectGoals({
       {showEditWindow && (
         <GoalCreationWindow
           toggleWindow={setShowEditWindow}
-          onAccept={() => null} // TODO
+          onAccept={(uGoal) => {
+            if (selectedGoal) updateGoal(selectedGoal.id, uGoal);
+          }}
           onClose={() => setSelectedGoal(null)}
           initParams={
             selectedGoal

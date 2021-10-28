@@ -36,15 +36,27 @@ const remove = async (id: string): Promise<void> => {
   return axios.delete(`${baseUrl}/${id}`);
 };
 
-// const update = (id: string, newObject: Project): Promise<Project> => {
-//   return axios
-//     .put<Project>(`${baseUrl}/${id}`, newObject)
-//     .then((res) => res.data);
-// };
+const update = async (id: string, goal: NewGoal): Promise<Goal> => {
+  const formatedGoal = { ...goal, finished: false };
+
+  if (goal.repeat)
+    formatedGoal.dates = formatedGoal.dates.map((d) => dayNameToNumber(d));
+
+  const updatedGoal = await axios
+    .put<Omit<GoalRawData, 'id'>, AxiosResponse<Goal>>(
+      `${baseUrl}/${id}`,
+      formatedGoal,
+    )
+    .then((res) => res.data);
+
+  const formatedDates = formatDates(updatedGoal);
+
+  return { ...updatedGoal, dates: formatedDates };
+};
 
 export default {
   getById,
   create,
   remove,
-  // update,
+  update,
 };

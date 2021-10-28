@@ -88,6 +88,16 @@ function Store(): StoreData {
     }
   };
 
+  const updateGoal = async (id: string, goal: NewGoal): Promise<void> => {
+    const updatedGoal = await goalsServices.update(id, goal);
+    setGoals((prev) => {
+      return [
+        ...prev.filter((g) => g.id !== updatedGoal.id),
+        { ...updatedGoal, nextDate: getNextDate(updatedGoal.dates) },
+      ];
+    });
+  };
+
   return {
     projects,
     goals,
@@ -95,6 +105,7 @@ function Store(): StoreData {
     createGoal,
     deleteProject,
     deleteGoal,
+    updateGoal,
   };
 }
 

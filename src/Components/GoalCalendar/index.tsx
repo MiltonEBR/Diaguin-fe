@@ -9,10 +9,6 @@ import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import './calendar.css';
 import { getClosestDate, todayDate } from '../../Utils/dates';
 
-// TODO:
-// 1. Don't allow the user to select days past TODAY
-// 2. Focus the calendar to the closest date
-
 function Navbar({
   onPreviousClick,
   onNextClick,

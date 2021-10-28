@@ -39,4 +39,5 @@ export interface StoreData {
   createGoal: (goal: NewGoal, projectId: string) => Promise<void>;
   deleteProject: (id: string) => Promise<void>;
   deleteGoal: (id: string) => Promise<void>;
+  updateGoal: (id: string, goal: NewGoal) => Promise<void>;
 }

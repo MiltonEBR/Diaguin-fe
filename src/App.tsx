@@ -14,6 +14,7 @@ function App(): JSX.Element {
     createGoal,
     deleteProject,
     deleteGoal,
+    updateGoal,
   } = Store();
 
   const match = useRouteMatch<{ id: string }>({
@@ -38,6 +39,7 @@ function App(): JSX.Element {
           goals={filteredGoals}
           createGoal={createGoal}
           deleteGoal={deleteGoal}
+          updateGoal={updateGoal}
         />
       </Route>
       <Route path="/project/:id">
