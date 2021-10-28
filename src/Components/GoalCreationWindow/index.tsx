@@ -37,7 +37,11 @@ function GoalCreationWindow({
 
   useEffect(() => {
     if (initParams) {
-      if (initParams.repeat) {
+      if (isRepeat !== initParams.repeat) {
+        setDates([]);
+        return;
+      }
+      if (isRepeat && initParams.repeat) {
         setDates(
           initParams.dates.map((d) => getWeekDay(d as string).substring(0, 3)),
         );
@@ -45,7 +49,7 @@ function GoalCreationWindow({
         setDates(initParams.dates.map((d) => parseJSON(d)));
       }
     }
-  }, []); // eslint-disable-line
+  }, [isRepeat]); // eslint-disable-line
 
   return (
     <ConfirmationWindow

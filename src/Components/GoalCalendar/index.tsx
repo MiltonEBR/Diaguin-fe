@@ -7,7 +7,7 @@ import DayPicker, {
 } from 'react-day-picker';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import './calendar.css';
-import { todayDate } from '../../Utils/dates';
+import { getClosestDate, todayDate } from '../../Utils/dates';
 
 // TODO:
 // 1. Don't allow the user to select days past TODAY
@@ -70,6 +70,10 @@ function GoalCalendar({
       selectedDays={value}
       onDayClick={handleDayClick}
       navbarElement={Navbar}
+      disabledDays={{
+        before: todayDate,
+      }}
+      month={getClosestDate(value)}
     />
   );
 }

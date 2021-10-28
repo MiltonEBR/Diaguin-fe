@@ -11,6 +11,7 @@ import {
   compareAsc,
   isToday,
   getMonth,
+  isDate,
 } from 'date-fns';
 
 export const todayDate = startOfToday();
@@ -87,4 +88,12 @@ export const dayNameToNumber = (day: string): string => {
 export const getWeekDay = (date: string): string => {
   const day = parseJSON(date);
   return dayName[getDay(day)];
+};
+
+export const getClosestDate = (dates: string[] | Date[]): Date => {
+  const datesArray: Date[] = dates.map((date) =>
+    isDate(date) ? (date as Date) : parseJSON(date),
+  );
+
+  return closestTo(todayDate, datesArray);
 };
