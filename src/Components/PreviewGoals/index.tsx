@@ -13,6 +13,7 @@ function ProjectGoals({
   onExpand,
   noTitles,
   onCheck,
+  onOpenGoal,
 }: {
   className?: string;
   upcomingGoals: Goal[];
@@ -20,6 +21,7 @@ function ProjectGoals({
   onExpand?: string;
   noTitles?: boolean;
   onCheck?: (goal: Goal) => void;
+  onOpenGoal?: (goal: Goal) => void;
 }): JSX.Element {
   return (
     <div
@@ -56,6 +58,10 @@ function ProjectGoals({
               onCheck={() => {
                 if (onCheck) onCheck(g);
               }}
+              showArrow={onOpenGoal !== undefined}
+              onOpen={(goal) => {
+                if (onOpenGoal) onOpenGoal(goal);
+              }}
             />
           ))}
           {!noTitles && upcomingGoals.length > 0 && (
@@ -69,6 +75,10 @@ function ProjectGoals({
               key={`nd-${g.id}`}
               onCheck={() => {
                 if (onCheck) onCheck(g);
+              }}
+              showArrow={onOpenGoal !== undefined}
+              onOpen={(goal) => {
+                if (onOpenGoal) onOpenGoal(goal);
               }}
             />
           ))}
@@ -95,6 +105,7 @@ ProjectGoals.defaultProps = {
   onExpand: '',
   noTitles: false,
   onCheck: undefined,
+  onOpenGoal: undefined,
 };
 
 export default ProjectGoals;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import Subtitle from '../../Components/Texts/Subtitle';
 import WelcomeTtl from '../../Components/Texts/WelcomeTtl';
 import Cards from '../../Components/Cards';
@@ -21,6 +22,8 @@ function Home({
   createProject: (name: string) => void;
   updateGoal: (id: string, goal: Goal) => void;
 }): JSX.Element {
+  const history = useHistory();
+
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
   const [projectName, setProjectName] = useState<string>('');
 
@@ -73,6 +76,12 @@ function Home({
           className="-mx-6"
           onCheck={(g) => {
             updateGoal(g.id, { ...g, finished: !g.finished });
+          }}
+          onOpenGoal={(goal) => {
+            const proj = projects.find((p) => p.goalsId.includes(goal.id));
+            if (proj) {
+              history.push(`/project/${proj.id}`);
+            }
           }}
         />
       </div>

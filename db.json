@@ -21,11 +21,11 @@
   ],
   "goals": [
     {
-      "id": 1,
       "description": "Watch a tutorial",
       "repeat": false,
       "dates": ["2022-04-23T18:25:43.511Z"],
-      "finished": false
+      "finished": true,
+      "id": 1
     },
     {
       "id": 2,
@@ -35,18 +35,18 @@
       "finished": false
     },
     {
-      "id": 3,
       "description": "Bip bup",
       "repeat": false,
       "dates": [],
-      "finished": false
+      "finished": false,
+      "id": 3
     },
     {
-      "id": 4,
       "description": "Some goal",
       "repeat": false,
       "dates": ["2021-11-23T18:25:43.511Z"],
-      "finished": true
+      "finished": false,
+      "id": 4
     },
     {
       "id": 5,

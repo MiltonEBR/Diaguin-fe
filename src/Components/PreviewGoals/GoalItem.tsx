@@ -13,12 +13,14 @@ function GoalItem({
   className,
   showArrow,
   onCheck,
+  onOpen,
 }: {
   goal: Goal;
   showDate?: boolean;
   showArrow?: boolean;
   className?: string;
   onCheck?: () => void;
+  onOpen?: (goal: Goal) => void;
 }): JSX.Element {
   return (
     <div
@@ -36,13 +38,22 @@ function GoalItem({
         </IconContext.Provider>
       </button>
       {goal.dates && showDate ? (
-        <p className="font-semibold text-blue text-xl mr-3 w-32">
-          {goal.nextDate}
-        </p>
+        <div className="text-blue mr-3 w-32 relative">
+          <p className="font-semibold text-xl">{goal.nextDate}</p>
+          {goal.repeat && (
+            <p className="font-light text-xs absolute -mt-1">Repeating</p>
+          )}
+        </div>
       ) : null}
       <p className="font-light text-blue text-lg">{goal.description}</p>
       {showArrow && (
-        <button type="button" className="ml-auto">
+        <button
+          type="button"
+          className="ml-auto"
+          onClick={() => {
+            if (onOpen) onOpen(goal);
+          }}
+        >
           <IconContext.Provider value={{ className: 'fill-dark h-7 w-7' }}>
             <Arrow />
           </IconContext.Provider>
@@ -57,6 +68,7 @@ GoalItem.defaultProps = {
   showDate: false,
   showArrow: false,
   onCheck: undefined,
+  onOpen: undefined,
 };
 
 export default GoalItem;
