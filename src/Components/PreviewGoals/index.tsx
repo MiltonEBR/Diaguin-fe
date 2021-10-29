@@ -12,12 +12,14 @@ function ProjectGoals({
   noDateGoals,
   onExpand,
   noTitles,
+  onCheck,
 }: {
   className?: string;
   upcomingGoals: Goal[];
   noDateGoals: Goal[];
   onExpand?: string;
   noTitles?: boolean;
+  onCheck?: (goal: Goal) => void;
 }): JSX.Element {
   return (
     <div
@@ -51,6 +53,9 @@ function ProjectGoals({
                        border-opacity-20 border-blue-dark"
               showDate
               key={`up-${g.id}`}
+              onCheck={() => {
+                if (onCheck) onCheck(g);
+              }}
             />
           ))}
           {!noTitles && upcomingGoals.length > 0 && (
@@ -62,6 +67,9 @@ function ProjectGoals({
               className="border-solid border-b-2
                        border-opacity-20 border-blue-dark"
               key={`nd-${g.id}`}
+              onCheck={() => {
+                if (onCheck) onCheck(g);
+              }}
             />
           ))}
         </div>
@@ -86,6 +94,7 @@ ProjectGoals.defaultProps = {
   className: '',
   onExpand: '',
   noTitles: false,
+  onCheck: undefined,
 };
 
 export default ProjectGoals;

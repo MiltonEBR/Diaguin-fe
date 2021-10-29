@@ -7,13 +7,12 @@ const getAll = (): Promise<Project[]> => {
   return axios.get(baseUrl).then((res) => res.data);
 };
 
-const create = (newProjectName: string): Promise<Project> => {
+const create = async (newProjectName: string): Promise<Project> => {
   const dummyCreation = {
     // Should be changed to only send the name when backend works
     name: newProjectName,
     goalsId: [],
     goalCount: 0,
-    finishedGoals: 0,
   };
 
   return axios

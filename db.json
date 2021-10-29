@@ -3,33 +3,19 @@
     {
       "id": 1,
       "name": "Learn Python",
-      "goalsId": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6
-      ],
-      "goalCount": 3,
-      "finishedGoals": 1
+      "goalsId": [1, 2, 3, 4, 5, 6],
+      "goalCount": 3
     },
     {
       "name": "Test",
-      "goalsId": [
-        7
-      ],
+      "goalsId": [7],
       "goalCount": 3,
-      "finishedGoals": 0,
       "id": 2
     },
     {
       "name": "Empty",
-      "goalsId": [
-        8
-      ],
+      "goalsId": [8],
       "goalCount": 1,
-      "finishedGoals": 0,
       "id": 3
     }
   ],
@@ -38,19 +24,14 @@
       "id": 1,
       "description": "Watch a tutorial",
       "repeat": false,
-      "dates": [
-        "2022-04-23T18:25:43.511Z"
-      ],
+      "dates": ["2022-04-23T18:25:43.511Z"],
       "finished": false
     },
     {
       "id": 2,
       "description": "Machine learning",
       "repeat": true,
-      "dates": [
-        "1",
-        "3"
-      ],
+      "dates": ["1", "3"],
       "finished": false
     },
     {
@@ -64,18 +45,14 @@
       "id": 4,
       "description": "Some goal",
       "repeat": false,
-      "dates": [
-        "2021-11-23T18:25:43.511Z"
-      ],
+      "dates": ["2021-11-23T18:25:43.511Z"],
       "finished": true
     },
     {
       "id": 5,
       "description": "Ayea men",
       "repeat": true,
-      "dates": [
-        5
-      ],
+      "dates": [5],
       "finished": true
     },
     {

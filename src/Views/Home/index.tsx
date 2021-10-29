@@ -14,10 +14,12 @@ function Home({
   projects,
   goals,
   createProject,
+  updateGoal,
 }: {
   projects: Project[];
   goals: Goal[];
   createProject: (name: string) => void;
+  updateGoal: (id: string, goal: Goal) => void;
 }): JSX.Element {
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
   const [projectName, setProjectName] = useState<string>('');
@@ -45,7 +47,20 @@ function Home({
         <Subtitle txt="My projects" className="mb-12 font-bold" />
         <Cards
           className="-m-6"
-          list={projects}
+          list={projects.map((p) => {
+            const projGoals = p.goalsId.map((gId) =>
+              goals.find((g) => g.id === gId),
+            );
+
+            return {
+              ...p,
+              finishedGoals: projGoals.reduce(
+                (prev, cur) =>
+                  cur && !cur.repeat && cur.finished ? prev + 1 : prev,
+                0,
+              ),
+            };
+          })}
           onCreate={() => setShowConfirm(true)}
         />
       </div>
@@ -56,6 +71,9 @@ function Home({
           noDateGoals={filteredGoals}
           noTitles
           className="-mx-6"
+          onCheck={(g) => {
+            updateGoal(g.id, { ...g, finished: !g.finished });
+          }}
         />
       </div>
       {showConfirm && (

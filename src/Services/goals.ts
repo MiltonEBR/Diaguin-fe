@@ -36,8 +36,14 @@ const remove = async (id: string): Promise<void> => {
   return axios.delete(`${baseUrl}/${id}`);
 };
 
-const update = async (id: string, goal: NewGoal): Promise<Goal> => {
-  const formatedGoal = { ...goal, finished: false };
+const update = async (id: string, goal: NewGoal | Goal): Promise<Goal> => {
+  const formatedGoal: Omit<GoalRawData, 'id'> = {
+    description: goal.description,
+    repeat: goal.repeat,
+    dates: goal.dates,
+    finished: false,
+  };
+  if ('finished' in goal) formatedGoal.finished = goal.finished;
 
   if (goal.repeat)
     formatedGoal.dates = formatedGoal.dates.map((d) => dayNameToNumber(d));

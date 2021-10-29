@@ -12,10 +12,12 @@ function Project({
   project,
   goals,
   deleteProject,
+  updateGoal,
 }: {
   project: ProjectType | null;
   goals: Goal[];
   deleteProject: (id: string) => void;
+  updateGoal: (id: string, goal: Goal) => void;
 }): JSX.Element {
   const history = useHistory();
   const [deleteWindow, setDeleteWindow] = useState<boolean>(false);
@@ -24,7 +26,7 @@ function Project({
     return <div>Error</div>;
   }
 
-  const { name, goalCount, finishedGoals, id } = project;
+  const { name, goalCount, id } = project;
 
   const upcomingGoals = goals
     .filter((g) => g.nextDate)
@@ -45,7 +47,14 @@ function Project({
         onBack={() => history.push('/')}
       />
       <Subtitle txt="Progress" />
-      <Progress curr={finishedGoals} max={goalCount} className="my-6" />
+      <Progress
+        curr={goals.reduce(
+          (prev, cur) => (!cur.repeat && cur.finished ? prev + 1 : prev),
+          0,
+        )}
+        max={goalCount}
+        className="my-6"
+      />
       <Subtitle txt="Goals" className="font-bold mb-6" />
 
       <PreviewGoals
@@ -53,6 +62,9 @@ function Project({
         noDateGoals={noDateGoals}
         className="-ml-6 flex-shrink flex-grow-0 min-h-0"
         onExpand={`/project/${id}/details`}
+        onCheck={(g) => {
+          updateGoal(g.id, { ...g, finished: !g.finished });
+        }}
       />
 
       {deleteWindow && (

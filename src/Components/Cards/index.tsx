@@ -4,13 +4,15 @@ import type { Project } from '../../Types';
 import CreateCard from './CreateCard';
 import SingleCard from './SingleCard';
 
+type List = Project & { finishedGoals: number };
+
 function Cards({
   className,
   list,
   onCreate,
 }: {
   className?: string;
-  list: Project[];
+  list: List[];
   onCreate: () => void;
 }): JSX.Element {
   const history = useHistory();
@@ -20,7 +22,7 @@ function Cards({
       className={`flex flex-row overflow-x-auto
                   w-screen pl-6 pb-10 ${className}`}
     >
-      {list.map(({ name, id, goalCount, finishedGoals, goalsId }: Project) => {
+      {list.map(({ name, id, goalCount, goalsId, finishedGoals }) => {
         const description = [];
         if (goalCount > 0)
           description.push(`${finishedGoals}/${goalCount} goals finished`);

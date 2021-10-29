@@ -47,10 +47,16 @@ function App(): JSX.Element {
           project={project || null}
           goals={filteredGoals}
           deleteProject={deleteProject}
+          updateGoal={updateGoal}
         />
       </Route>
       <Route path="/">
-        <Home projects={projects} goals={goals} createProject={createProject} />
+        <Home
+          projects={projects}
+          goals={goals}
+          createProject={createProject}
+          updateGoal={updateGoal}
+        />
       </Route>
     </Switch>
   );

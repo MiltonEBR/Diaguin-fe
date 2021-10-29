@@ -29,7 +29,6 @@ export interface Project {
   name: string;
   goalsId: Array<string>;
   goalCount: number;
-  finishedGoals: number;
 }
 
 export interface StoreData {

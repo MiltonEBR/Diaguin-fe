@@ -12,23 +12,30 @@ function GoalItem({
   showDate,
   className,
   showArrow,
+  onCheck,
 }: {
   goal: Goal;
   showDate?: boolean;
   showArrow?: boolean;
   className?: string;
+  onCheck?: () => void;
 }): JSX.Element {
   return (
     <div
       className={`w-full py-4 px-6 flex flex-row content-center ${className}`}
     >
-      <button type="button" className="mr-3">
+      <button
+        type="button"
+        className="mr-3"
+        onClick={() => {
+          if (onCheck) onCheck();
+        }}
+      >
         <IconContext.Provider value={{ className: 'fill-dark h-7 w-7' }}>
           {goal.finished ? <Check /> : <NoCheck />}
         </IconContext.Provider>
       </button>
       {goal.dates && showDate ? (
-        // TODO: Show the appropiate date
         <p className="font-semibold text-blue text-xl mr-3 w-32">
           {goal.nextDate}
         </p>
@@ -49,6 +56,7 @@ GoalItem.defaultProps = {
   className: '',
   showDate: false,
   showArrow: false,
+  onCheck: undefined,
 };
 
 export default GoalItem;

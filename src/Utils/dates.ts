@@ -79,7 +79,11 @@ export const getMonthName = (date: Date): string =>
   monthName[getMonth(date) - 1];
 
 export const dayNameToNumber = (day: string): string => {
-  return String(dayName.findIndex((d) => d.includes(day)));
+  let dayIndex = dayName.findIndex((d) => d.includes(day));
+  if (dayIndex < 0) {
+    dayIndex = getDay(parseJSON(day));
+  }
+  return String(dayIndex);
 };
 
 export const getWeekDay = (date: string): string => {
